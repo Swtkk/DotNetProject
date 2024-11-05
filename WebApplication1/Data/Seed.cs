@@ -21,13 +21,13 @@ namespace WebApplication1.Data
                         new Post()
                         {
                             Title = "Title",
-                            Description = "Description",
+                            Content = "Description",
 
                         },
                         new Post()
                         {
                             Title = "Title2",
-                            Description = "Description2",
+                            Content = "Description2",
 
                         }
 
