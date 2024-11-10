@@ -11,7 +11,7 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241105181523_InitialCreate")]
+    [Migration("20241110193524_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -21,21 +21,6 @@ namespace WebApplication1.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            modelBuilder.Entity("ForumUser", b =>
-                {
-                    b.Property<int>("ModeratedForumsForumId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ModeratorsUserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ModeratedForumsForumId", "ModeratorsUserId");
-
-                    b.HasIndex("ModeratorsUserId");
-
-                    b.ToTable("ForumModerators", (string)null);
-                });
 
             modelBuilder.Entity("WebApplication1.Models.Category", b =>
                 {
@@ -51,27 +36,6 @@ namespace WebApplication1.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("WebApplication1.Models.Forum", b =>
-                {
-                    b.Property<int>("ForumId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.HasKey("ForumId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Forums");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Message", b =>
@@ -108,6 +72,9 @@ namespace WebApplication1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -115,20 +82,17 @@ namespace WebApplication1.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("ForumId")
-                        .HasColumnType("int");
+                    b.Property<bool>("IsPinned")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<bool>("isPinned")
-                        .HasColumnType("tinyint(1)");
-
                     b.HasKey("PostId");
 
-                    b.HasIndex("ForumId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Posts");
                 });
@@ -200,32 +164,6 @@ namespace WebApplication1.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ForumUser", b =>
-                {
-                    b.HasOne("WebApplication1.Models.Forum", null)
-                        .WithMany()
-                        .HasForeignKey("ModeratedForumsForumId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WebApplication1.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("ModeratorsUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("WebApplication1.Models.Forum", b =>
-                {
-                    b.HasOne("WebApplication1.Models.Category", "Category")
-                        .WithMany("Forums")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
             modelBuilder.Entity("WebApplication1.Models.Message", b =>
                 {
                     b.HasOne("WebApplication1.Models.Post", "Post")
@@ -247,13 +185,13 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("WebApplication1.Models.Post", b =>
                 {
-                    b.HasOne("WebApplication1.Models.Forum", "Forum")
+                    b.HasOne("WebApplication1.Models.Category", "Category")
                         .WithMany("Posts")
-                        .HasForeignKey("ForumId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Forum");
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.PrivateMessage", b =>
@@ -276,11 +214,6 @@ namespace WebApplication1.Migrations
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Category", b =>
-                {
-                    b.Navigation("Forums");
-                });
-
-            modelBuilder.Entity("WebApplication1.Models.Forum", b =>
                 {
                     b.Navigation("Posts");
                 });

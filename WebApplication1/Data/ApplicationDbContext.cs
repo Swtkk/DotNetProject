@@ -6,41 +6,27 @@ namespace WebApplication1.Data
     public class ApplicationDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<Forum> Forums { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<PrivateMessage> PrivateMessages { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-             // Relacja wiele-do-wielu: User -> Forum (Moderatorzy)
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.ModeratedForums)
-                .WithMany(f => f.Moderators)
-                .UsingEntity(j => j.ToTable("ForumModerators"));
-
-            // Relacja jeden-do-wielu: Category -> Forum
+            // Relacja jeden-do-wielu: Category -> Post
             modelBuilder.Entity<Category>()
-                .HasMany(c => c.Forums)
-                .WithOne(f => f.Category)
-                .HasForeignKey(f => f.CategoryId)
+                .HasMany(c => c.Posts)
+                .WithOne(p => p.Category)
+                .HasForeignKey(p => p.CategoryId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // Relacja jeden-do-wielu: Forum -> Thread
-            modelBuilder.Entity<Forum>()
-                .HasMany(f => f.Posts)
-                .WithOne(t => t.Forum)
-                .HasForeignKey(t => t.ForumId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            // Relacja jeden-do-wielu: Thread -> Message
+            // Relacja jeden-do-wielu: Post -> Message
             modelBuilder.Entity<Post>()
-                .HasMany(t => t.Messages)
+                .HasMany(p => p.Messages)
                 .WithOne(m => m.Post)
                 .HasForeignKey(m => m.PostId)
                 .OnDelete(DeleteBehavior.Cascade);
@@ -66,6 +52,5 @@ namespace WebApplication1.Data
                 .HasForeignKey(pm => pm.ReceiverId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
-        
     }
 }

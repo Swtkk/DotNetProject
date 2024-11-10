@@ -50,19 +50,22 @@ namespace WebApplication1.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Forums",
+                name: "Posts",
                 columns: table => new
                 {
-                    ForumId = table.Column<int>(type: "int", nullable: false)
+                    PostId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Title = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Content = table.Column<string>(type: "longtext", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    IsPinned = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Forums", x => x.ForumId);
+                    table.PrimaryKey("PK_Posts", x => x.PostId);
                     table.ForeignKey(
-                        name: "FK_Forums_Categories_CategoryId",
+                        name: "FK_Posts_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
@@ -100,55 +103,6 @@ namespace WebApplication1.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "ForumModerators",
-                columns: table => new
-                {
-                    ModeratedForumsForumId = table.Column<int>(type: "int", nullable: false),
-                    ModeratorsUserId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ForumModerators", x => new { x.ModeratedForumsForumId, x.ModeratorsUserId });
-                    table.ForeignKey(
-                        name: "FK_ForumModerators_Forums_ModeratedForumsForumId",
-                        column: x => x.ModeratedForumsForumId,
-                        principalTable: "Forums",
-                        principalColumn: "ForumId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ForumModerators_Users_ModeratorsUserId",
-                        column: x => x.ModeratorsUserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySQL:Charset", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Posts",
-                columns: table => new
-                {
-                    PostId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
-                    Content = table.Column<string>(type: "longtext", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    isPinned = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    ForumId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Posts", x => x.PostId);
-                    table.ForeignKey(
-                        name: "FK_Posts_Forums_ForumId",
-                        column: x => x.ForumId,
-                        principalTable: "Forums",
-                        principalColumn: "ForumId",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySQL:Charset", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "Messages",
                 columns: table => new
                 {
@@ -178,16 +132,6 @@ namespace WebApplication1.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ForumModerators_ModeratorsUserId",
-                table: "ForumModerators",
-                column: "ModeratorsUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Forums_CategoryId",
-                table: "Forums",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Messages_PostId",
                 table: "Messages",
                 column: "PostId");
@@ -198,9 +142,9 @@ namespace WebApplication1.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_ForumId",
+                name: "IX_Posts_CategoryId",
                 table: "Posts",
-                column: "ForumId");
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PrivateMessages_ReceiverId",
@@ -217,9 +161,6 @@ namespace WebApplication1.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ForumModerators");
-
-            migrationBuilder.DropTable(
                 name: "Messages");
 
             migrationBuilder.DropTable(
@@ -230,9 +171,6 @@ namespace WebApplication1.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "Forums");
 
             migrationBuilder.DropTable(
                 name: "Categories");

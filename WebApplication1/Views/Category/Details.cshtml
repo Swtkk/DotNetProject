@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApplication1.Models.Post>
+
+@{
+    var category = ViewBag.Category as WebApplication1.Models.Category;
+    ViewBag.Title = category.Name;
+    Layout = "_Layout";
+}
+
+<h2>@category.Name</h2>
+
+<!-- Przycisk do tworzenia nowego wątku -->
+<div class="mb-3">
+    <a asp-controller="Post" asp-action="Create" asp-route-categoryId="@category.CategoryId" class="btn btn-success">+ Stwórz nowy post</a>
+</div>
+
+<div class="list-group my-4">
+    @foreach (var post in Model)
+    {
+    <a asp-controller="Post" asp-action="Details" asp-route-id="@post.PostId"
+       class="list-group-item list-group-item-action mb-3 rounded shadow-sm p-3">
+        <h5 class="mb-1">@post.Title</h5>
+        <small class="text-muted">Created on: @post.CreatedAt.ToString("yyyy-MM-dd HH:mm")</small>
+    </a>
+    }
+</div>
+
+<!-- Paginacja -->
+<div class="pagination mt-3">
+    @if (ViewBag.CurrentPage > 1)
+    {
+    <a asp-action="Details" asp-route-id="@ViewBag.Category.CategoryId" asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" class="btn btn-secondary">Previous</a>
+    }
+
+    <span>Page @ViewBag.CurrentPage of @ViewBag.TotalPages</span>
+
+    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+    {
+    <a asp-action="Details" asp-route-id="@ViewBag.Category.CategoryId" asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" class="btn btn-secondary">Next</a>
+    }
+</div>
