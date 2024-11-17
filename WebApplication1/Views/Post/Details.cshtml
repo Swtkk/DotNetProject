@@ -1,0 +1,58 @@
+﻿@model WebApplication1.Models.Post
+
+@{
+ViewBag.Title = "Szczegóły Posta";
+Layout = "_Layout";
+}
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.PostId" class="btn btn-warning">Edytuj</a>
+    <form asp-action="Delete" asp-route-id="@Model.PostId" method="post" class="d-inline">
+        <button type="submit" class="btn btn-danger">Usuń</button>
+    </form>
+    <a asp-controller="Category" asp-action="Details" asp-route-id="@Model.CategoryId" class="btn btn-secondary">Wróć do kategorii</a>
+</div>
+<h2>@Model.Title</h2>
+<p><strong>Treść:</strong> @Model.Content</p>
+<p><strong>Data utworzenia:</strong> @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</p>
+
+<h3>Wiadomości:</h3>
+<div class="list-group my-4">
+    @foreach (var message in Model.Messages)
+    {
+    <div class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Avatar i nazwa użytkownika -->
+        <div class="d-flex align-items-center">
+            <img src="@message.User.Avatar" alt="Avatar" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+            <div>
+                <strong>@message.User.UserName</strong>
+                <br />
+                <small class="text-muted">@message.CreatedAt.ToString("yyyy-MM-dd HH:mm")</small>
+            </div>
+        </div>
+
+        <!-- Treść wiadomości -->
+        <div class="flex-grow-1 mx-3">
+            <p>@message.Content</p>
+        </div>
+
+        <!-- Przyciski akcji -->
+        <div>
+            <a asp-controller="Message" asp-action="Edit" asp-route-id="@message.MessageId" class="btn btn-outline-warning btn-sm">Edytuj</a>
+            <form asp-controller="Message" asp-action="Delete" asp-route-id="@message.MessageId" method="post" class="d-inline">
+                <button type="submit" class="btn btn-outline-danger btn-sm">Usuń</button>
+            </form>
+        </div>
+    </div>
+    }
+</div>
+
+<!-- Formularz dodawania nowej wiadomości -->
+<h4>Dodaj wiadomość:</h4>
+<form asp-controller="Message" asp-action="Create" method="post">
+    <input type="hidden" name="PostId" value="@Model.PostId" />
+    <div class="form-group">
+        <textarea name="Content" class="form-control" rows="3" placeholder="Wpisz swoją wiadomość..."></textarea>
+    </div>
+    <button type="submit" class="btn btn-success mt-2">Dodaj wiadomość</button>
+</form>
+

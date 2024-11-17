@@ -58,8 +58,7 @@ public class CategoryController : Controller
 
         // Sprawdzenie, czy kategoria istnieje
         var category = _context.Categories
-            .Where(c => c.CategoryId == id)
-            .FirstOrDefault();
+            .FirstOrDefault(c=> c.CategoryId ==id);
 
         if (category == null) return NotFound();
 
