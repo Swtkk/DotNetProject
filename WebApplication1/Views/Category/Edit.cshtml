@@ -1,0 +1,23 @@
+﻿@model WebApplication1.Models.Category
+
+@{
+ViewBag.Title = "Edytuj Post";
+Layout = "_Layout";
+}
+
+<h2>Edytuj Post</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="CategoryId" />
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Zapisz Zmiany</button>
+    <a asp-action="Details" asp-route-id="@Model.CategoryId" class="btn btn-secondary">Anuluj</a>
+</form>
+
+
+

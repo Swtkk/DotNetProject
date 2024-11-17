@@ -5,4 +5,48 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="text-center">
+        <h1 class="display-4">Witaj na forum</h1>
+        <p>Statystyki Forum :</p>
+
+        <div class="row mt-4">
+            <!-- Liczba kategorii -->
+            <div class="col-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Kategorii</h5>
+                        <p class="card-text display-4">@ViewBag.TotalCategories</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liczba postów -->
+            <div class="col-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Postów</h5>
+                        <p class="card-text display-4">@ViewBag.TotalPosts</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liczba wiadomości -->
+            <div class="col-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Wiadomości</h5>
+                        <p class="card-text display-4">@ViewBag.TotalMessages</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Użytkowników</h5>
+                        <p class="card-text display-4">@ViewBag.TotalUsers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
