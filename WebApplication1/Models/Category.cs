@@ -12,6 +12,6 @@ namespace WebApplication1.Models
         public string Name { get; set; }
 
         // Relacja jeden-do-wielu: kategoria może mieć wiele wątków (Post)
-        public ICollection<Post> Posts { get; set; } = new List<Post>();
+        public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
     }
 }
