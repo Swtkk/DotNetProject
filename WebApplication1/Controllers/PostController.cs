@@ -98,4 +98,18 @@ public class PostController : Controller
         _context.SaveChanges();
         return RedirectToAction("Details", "Category", new { id = post.CategoryId });
     }
+
+
+    [HttpPost]
+    public IActionResult TogglePin(int id)
+    {
+        var post = _context.Posts.Find(id);
+        if (post == null) return NotFound();
+
+        post.IsPinned = !post.IsPinned; // Odwrócenie flagi przypięcia
+        _context.SaveChanges();
+
+        return RedirectToAction("Details", "Category", new { id = post.CategoryId });
+    }
+
 }

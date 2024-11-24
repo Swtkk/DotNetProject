@@ -12,9 +12,41 @@
     <a asp-controller="Category" asp-action="Index" class="btn btn-outline-info">Wstecz</a>
     <a asp-controller="Post" asp-action="Create" asp-route-categoryId="@category.CategoryId" class="btn btn-success">+ Stwórz nowy post</a>
 </div>
+@if (Model.Any(p => p.IsPinned))
+{
+    <h3>Przypięte posty</h3>
+    <div class="list-group my-4">
+        @foreach(var post in Model.Where(p => p.IsPinned))
+        {
+            <a asp-controller="Post" asp-action="Details" asp-route-id="@post.PostId"
+               class="list-group-item mb-3 rounded shadow-sm p-4 d-flex align-items-center justify-content-around text-decoration-none">
+                <!-- Sekcja tytułu po lewej stronie -->
+                <div class="flex-grow-1">
+                    <h4 class="mb-1 text-dark">@post.Title</h4>
+                    <small class="text-muted">Created on: @post.CreatedAt.ToString("yyyy-MM-dd HH:mm")</small>
+                </div>
 
+                <!-- Sekcja daty pośrodku -->
+                <div class="d-flex align-items-center">
+                    <form asp-controller="Post" asp-action="TogglePin" asp-route-id="@post.PostId" method="post" class="d-inline">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isPinned-@post.PostId" @(post.IsPinned ? "checked" : "") onchange="this.form.submit()" />
+                            <label class="form-check-label" for="isPinned-@post.PostId">Przypiąć?</label>
+                        </div>
+                    </form>
+                    <button asp-controller="Post" asp-action="Edit" asp-route-id="@post.PostId" class="btn btn-outline-warning btn-sm px-3 py-2 ">Edytuj</button>
+                    <form asp-controller="Post" asp-action="Delete" asp-route-id="@post.PostId" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-outline-danger btn-sm px-3 py-2">Usuń</button>
+                    </form>
+                </div>
+
+                <!-- Sekcja przycisków po prawej stronie -->
+            </a>
+        }
+    </div>
+}
 <div class="list-group my-4">
-    @foreach (var post in Model)
+    @foreach (var post in Model.Where(p=>!p.IsPinned))
     {
         @* Szczegóły *@
         <a asp-controller="Post" asp-action="Details" asp-route-id="@post.PostId"
@@ -26,7 +58,13 @@
             </div>
 
             <!-- Sekcja daty pośrodku -->
-            <div>
+            <div class="d-flex align-items-center">
+                <form asp-controller="Post" asp-action="TogglePin" asp-route-id="@post.PostId" method="post" class="d-inline">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="isPinned-@post.PostId" @(post.IsPinned ? "checked" : "") onchange="this.form.submit()" />
+                        <label class="form-check-label" for="isPinned-@post.PostId">Przypiąć?</label>
+                    </div>
+                </form>
                 <button asp-controller="Post" asp-action="Edit" asp-route-id="@post.PostId" class="btn btn-outline-warning btn-sm px-3 py-2 ">Edytuj</button>
                 <form asp-controller="Post" asp-action="Delete" asp-route-id="@post.PostId" method="post" class="d-inline">
                     <button type="submit" class="btn btn-outline-danger btn-sm px-3 py-2">Usuń</button>
