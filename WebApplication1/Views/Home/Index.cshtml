@@ -47,6 +47,12 @@
                     </div>
                 </div>
             </div>
+            @if (User.IsInRole(SD.Role_Admin))
+            {
+            <div>
+                Tą wiadomość widzi tylko administrator
+            </div>
+            }
         </div>
     </div>
 </div>

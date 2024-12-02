@@ -13,11 +13,11 @@ namespace WebApplication1.Models
         public DateTime SentAt { get; set; }
 
         // Nadawca wiadomości
-        public int SenderId { get; set; }
+        public string SenderId { get; set; }
         public User Sender { get; set; }
 
         // Odbiorca wiadomości
-        public int ReceiverId { get; set; }
+        public string ReceiverId { get; set; }
         public User Receiver { get; set; }
     }
 }

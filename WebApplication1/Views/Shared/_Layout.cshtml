@@ -18,7 +18,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="container navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item px-3">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
@@ -31,24 +31,25 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Create">Dodaj kategorie</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav">
-                    @* @if (User.Identity.IsAuthenticated) *@
-                    @* { *@
-                        <li class="nav-item">
-                            <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Login">Login</a>
-                        </li>
+                <partial name="_LoginPartial"/>
+                @* <ul class="navbar-nav"> *@
+                @*     $1$ @if (User.Identity.IsAuthenticated) #1# *@
+                @*     $1$ { #1# *@
+                @*         <li class="nav-item"> *@
+                @*             <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Login">Login</a> *@
+                @*         </li> *@
+                @*     $1$ } #1# *@
+                @*     $1$ else #1# *@
+                @*     $1$ { #1# *@
+                @*     <!-- Przycisk Login --> *@
+                @*     <li class="nav-item"> *@
+                @*          *@
+                @*         <form asp-controller="Account" asp-action="Logout" method="post" class="form-inline"> *@
+                @*             <button type="submit" class="btn btn-outline-danger">Logout</button> *@
+                @*         </form> *@
+                @*     </li> *@
                     @* } *@
-                    @* else *@
-                    @* { *@
-                    <!-- Przycisk Login -->
-                    <li class="nav-item">
-                        
-                        <form asp-controller="Account" asp-action="Logout" method="post" class="form-inline">
-                            <button type="submit" class="btn btn-outline-danger">Logout</button>
-                        </form>
-                    </li>
-                    @* } *@
-                </ul>
+                @* </ul> *@
             </div>
         </div>
     </nav>

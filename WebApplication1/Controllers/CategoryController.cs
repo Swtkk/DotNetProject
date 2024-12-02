@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Data;
 using WebApplication1.Models;
+using WebApplication1.Utility;
 
 namespace WebApplication1.Controllers;
 
+[Authorize(Roles = SD.Role_Admin)]
 public class CategoryController : Controller
 {
     private readonly ApplicationDbContext _context;

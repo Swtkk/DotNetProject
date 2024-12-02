@@ -20,9 +20,9 @@ namespace WebApplication1.Models
         // Relacja do kategorii
         [Required]
         public int CategoryId { get; set; }
-        public Category? Category { get; set; }
+        public virtual Category? Category { get; set; }
 
         // Relacja jeden-do-wielu: wątek może mieć wiele wiadomości
-        public ICollection<Message> Messages { get; set; } = new List<Message>();
+        public virtual ICollection<Message> Messages { get; set; } = new List<Message>();
     }
 }
