@@ -27,8 +27,8 @@
                 </div>
 
                 <!-- Sekcja daty pośrodku -->
-                <div class="d-flex align-items-center">
-                    <form asp-controller="Post" asp-action="TogglePin" asp-route-id="@post.PostId" method="post" class="d-inline">
+                <div class="d-flex align-items-center gap-2">
+                    <form asp-controller="Post" asp-action="TogglePin" asp-route-id="@post.PostId" method="post" class="d-inline ">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isPinned-@post.PostId" @(post.IsPinned ? "checked" : "") onchange="this.form.submit()" />
                             <label class="form-check-label" for="isPinned-@post.PostId">Przypiąć?</label>
@@ -45,6 +45,7 @@
         }
     </div>
 }
+<h3>Pozostałe posty</h3>
 <div class="list-group my-4">
     @foreach (var post in Model.Where(p=>!p.IsPinned))
     {
@@ -58,7 +59,7 @@
             </div>
 
             <!-- Sekcja daty pośrodku -->
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center gap-2">
                 <form asp-controller="Post" asp-action="TogglePin" asp-route-id="@post.PostId" method="post" class="d-inline">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="isPinned-@post.PostId" @(post.IsPinned ? "checked" : "") onchange="this.form.submit()" />

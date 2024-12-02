@@ -1,9 +1,11 @@
-﻿using WebApplication1.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using WebApplication1.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication1.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -17,6 +19,7 @@ namespace WebApplication1.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             // Relacja jeden-do-wielu: Category -> Post
             modelBuilder.Entity<Category>()
                 .HasMany(c => c.Posts)

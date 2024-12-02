@@ -1,5 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using WebApplication1.Models;
+using WebApplication1.Utility;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,7 +13,19 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 { 
     options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+// options => options.SignIn.RequireConfirmedAccount = true  potwierdzenie maila
+
+builder.Services.AddIdentity<User,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+builder.Services.AddRazorPages();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath =$"/Identity/Account/Login";
+    options.LogoutPath = $"/Identity/Account/Logout";
+    options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+});
 var app = builder.Build();
+
 
 if(args.Length ==1 && args[0].ToLower() =="seeddata")
 {
@@ -42,9 +59,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
-
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
