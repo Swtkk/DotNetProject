@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication1.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
-        public DbSet<User> Users { get; set; }
+        // public DbSet<User> User { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Message> Messages { get; set; }

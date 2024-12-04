@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace WebApplication1.Migrations
 {
     /// <inheritdoc />
-    public partial class migracja : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,12 +35,7 @@ namespace WebApplication1.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false),
-                    Discriminator = table.Column<string>(type: "varchar(13)", maxLength: 13, nullable: false),
-                    DisplayName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
-                    Role = table.Column<string>(type: "longtext", nullable: true),
-                    Avatar = table.Column<string>(type: "longtext", nullable: true),
-                    Rank = table.Column<string>(type: "longtext", nullable: true),
-                    LastActive = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastActive = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
@@ -124,8 +119,8 @@ namespace WebApplication1.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "varchar(255)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "varchar(255)", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "longtext", nullable: true),
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
                 },
@@ -171,8 +166,8 @@ namespace WebApplication1.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false),
-                    Name = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "varchar(255)", nullable: false),
+                    Name = table.Column<string>(type: "varchar(255)", nullable: false),
                     Value = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>

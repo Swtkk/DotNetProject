@@ -16,7 +16,7 @@
 {
     <h3>Przypięte posty</h3>
     <div class="list-group my-4">
-        @foreach(var post in Model.Where(p => p.IsPinned))
+        @foreach (var post in Model.Where(p => p.IsPinned))
         {
             <a asp-controller="Post" asp-action="Details" asp-route-id="@post.PostId"
                class="list-group-item mb-3 rounded shadow-sm p-4 d-flex align-items-center justify-content-around text-decoration-none">
@@ -30,7 +30,7 @@
                 <div class="d-flex align-items-center gap-2">
                     <form asp-controller="Post" asp-action="TogglePin" asp-route-id="@post.PostId" method="post" class="d-inline ">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isPinned-@post.PostId" @(post.IsPinned ? "checked" : "") onchange="this.form.submit()" />
+                            <input class="form-check-input" type="checkbox" id="isPinned-@post.PostId" @(post.IsPinned ? "checked" : "") onchange="this.form.submit()"/>
                             <label class="form-check-label" for="isPinned-@post.PostId">Przypiąć?</label>
                         </div>
                     </form>
@@ -47,7 +47,7 @@
 }
 <h3>Pozostałe posty</h3>
 <div class="list-group my-4">
-    @foreach (var post in Model.Where(p=>!p.IsPinned))
+    @foreach (var post in Model.Where(p => !p.IsPinned))
     {
         @* Szczegóły *@
         <a asp-controller="Post" asp-action="Details" asp-route-id="@post.PostId"
@@ -62,7 +62,7 @@
             <div class="d-flex align-items-center gap-2">
                 <form asp-controller="Post" asp-action="TogglePin" asp-route-id="@post.PostId" method="post" class="d-inline">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="isPinned-@post.PostId" @(post.IsPinned ? "checked" : "") onchange="this.form.submit()" />
+                        <input class="form-check-input" type="checkbox" id="isPinned-@post.PostId" @(post.IsPinned ? "checked" : "") onchange="this.form.submit()"/>
                         <label class="form-check-label" for="isPinned-@post.PostId">Przypiąć?</label>
                     </div>
                 </form>
@@ -77,16 +77,18 @@
     }
 </div>
 
-<div class="pagination mt-3">
-    @if (ViewBag.CurrentPage > 1)
-    {
-        <a asp-action="Details" asp-route-id="@ViewBag.Category.CategoryId" asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" class="btn btn-secondary">Poprzednia strona</a>
-    }
+<div class="pagination mt-3 d-flex flex-column align-items-center mx-auto">
+    <span class="mb-2">Strona @ViewBag.CurrentPage z @ViewBag.TotalPages</span>
 
-    <span>Strona @ViewBag.CurrentPage z @ViewBag.TotalPages</span>
+    <div class="d-flex justify-content-center">
+        @if (ViewBag.CurrentPage > 1)
+        {
+        <a asp-action="Details" asp-route-id="@ViewBag.Category.CategoryId" asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" class="btn btn-secondary me-2">Poprzednia strona</a>
+        }
 
-    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
-    {
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
         <a asp-action="Details" asp-route-id="@ViewBag.Category.CategoryId" asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" class="btn btn-secondary">Następna strona</a>
-    }
+        }
+    </div>
 </div>

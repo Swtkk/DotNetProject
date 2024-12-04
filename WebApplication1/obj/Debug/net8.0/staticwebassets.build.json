@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QuKWQfsj/KzhimpyASQVqzrSQTMt596hIZhmhkJwi+s=",
+  "Hash": "LS1V3bYPkHozFN/ISi8bg3jsK45MjAaz9JlhZXogLuc=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
@@ -1333,8 +1333,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2tiyv64ts",
-      "Integrity": "pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=",
+      "Fingerprint": "6su49yx178",
+      "Integrity": "KsqlbjsKrlL5ENxJSKzYIV2VtspUL3Rkc4bsnRdX2LE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -2581,7 +2581,7 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.c2tiyv64ts.css",
+      "Route": "css/site.6su49yx178.css",
       "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2591,7 +2591,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "541"
         },
         {
           "Name": "Content-Type",
@@ -2599,11 +2599,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"KsqlbjsKrlL5ENxJSKzYIV2VtspUL3Rkc4bsnRdX2LE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Oct 2024 10:48:44 GMT"
+          "Value": "Wed, 04 Dec 2024 18:39:58 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2613,7 +2613,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
+          "Value": "6su49yx178"
         },
         {
           "Name": "label",
@@ -2621,7 +2621,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-KsqlbjsKrlL5ENxJSKzYIV2VtspUL3Rkc4bsnRdX2LE="
         }
       ]
     },
@@ -2636,7 +2636,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "541"
         },
         {
           "Name": "Content-Type",
@@ -2644,11 +2644,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"KsqlbjsKrlL5ENxJSKzYIV2VtspUL3Rkc4bsnRdX2LE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Oct 2024 10:48:44 GMT"
+          "Value": "Wed, 04 Dec 2024 18:39:58 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2658,7 +2658,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-KsqlbjsKrlL5ENxJSKzYIV2VtspUL3Rkc4bsnRdX2LE="
         }
       ]
     },

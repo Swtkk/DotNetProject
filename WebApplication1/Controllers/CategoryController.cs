@@ -10,7 +10,6 @@ namespace WebApplication1.Controllers;
 public class CategoryController : Controller
 {
     private readonly ApplicationDbContext _context;
-    private const int PageSize = 12;
 
     public CategoryController(ApplicationDbContext context)
     {
@@ -22,13 +21,13 @@ public class CategoryController : Controller
     {
         var categories = _context.Categories
             .OrderBy(c => c.Name)
-            .Skip((pageNumber - 1) * PageSize)
-            .Take(PageSize)
+            .Skip((pageNumber - 1) * SD.PageSize)
+            .Take(SD.PageSize)
             .ToList();
 
         int totalCategories = _context.Categories.Count();
         ViewBag.CurrentPage = pageNumber;
-        ViewBag.TotalPages = (int)Math.Ceiling(totalCategories / (double)PageSize);
+        ViewBag.TotalPages = (int)Math.Ceiling(totalCategories / (double)SD.PageSize);
 
         return View(categories);
     }
@@ -58,7 +57,6 @@ public class CategoryController : Controller
 
     public IActionResult Details(int id, int pageNumber = 1)
     {
-        const int PageSize = 12;
 
         // Sprawdzenie, czy kategoria istnieje
         var category = _context.Categories
@@ -70,13 +68,13 @@ public class CategoryController : Controller
         var posts = _context.Posts
             .Where(p => p.CategoryId == id)
             .OrderByDescending(p => p.CreatedAt)
-            .Skip((pageNumber - 1) * PageSize)
-            .Take(PageSize)
+            .Skip((pageNumber - 1) * SD.PageSize)
+            .Take(SD.PageSize)
             .ToList();
 
         int totalPosts = _context.Posts.Count(p => p.CategoryId == id);
         ViewBag.CurrentPage = pageNumber;
-        ViewBag.TotalPages = (int)Math.Ceiling(totalPosts / (double)PageSize);
+        ViewBag.TotalPages = (int)Math.Ceiling(totalPosts / (double)SD.PageSize);
         ViewBag.Category = category;
 
         return View(posts);

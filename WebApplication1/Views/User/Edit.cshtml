@@ -1,0 +1,27 @@
+﻿@model WebApplication1.Models.User
+
+@{
+    
+    Layout = "_Layout";
+}
+
+<h2>Edytuj Użytkownika</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" /> 
+    <div class="form-group">
+        <label asp-for="UserName" class="control-label"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+        
+    </div>
+    <div class="form-group">
+        <label asp-for="Role" class="control-label">Rola</label>
+        <select asp-for="Role" asp-items="ViewBag.Roles" class="form-control">
+            <option disabled value="">Wybierz rolę</option>
+        </select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Zapisz Zmiany</button>
+    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+</form>

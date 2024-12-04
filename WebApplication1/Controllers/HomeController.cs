@@ -18,7 +18,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-
+        
         ViewBag.TotalCategories = _context.Categories.Count();
         ViewBag.TotalPosts = _context.Posts.Count();
         ViewBag.TotalUsers = _context.Users.Count();
@@ -36,4 +36,5 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+    
 }
