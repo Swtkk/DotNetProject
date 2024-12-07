@@ -21,6 +21,7 @@ namespace WebApplication1.Areas.Identity.Pages.Account.Manage
         [BindProperty] public IFormFile AvatarFile { get; set; }
         private readonly IWebHostEnvironment _webHostEnvironment;
         public string Avatar { get; set; }
+        private const string DefaultAvatarPath = "userAvatar.png";
 
         public IndexModel(
             UserManager<User> userManager,
@@ -78,6 +79,35 @@ namespace WebApplication1.Areas.Identity.Pages.Account.Manage
             {
                 PhoneNumber = phoneNumber
             };
+        }
+
+        public async Task<IActionResult> OnPostResetAvatarAsync()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return RedirectToPage("/Account/Login");
+            }
+
+            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Images");
+            if (!string.IsNullOrEmpty(user.Avatar) && user.Avatar != DefaultAvatarPath)
+            {
+                var oldFilePath = Path.Combine(uploadsFolder, user.Avatar);
+                if (System.IO.File.Exists(oldFilePath))
+                {
+                    System.IO.File.Delete(oldFilePath);
+                }
+            }
+
+            user.Avatar = DefaultAvatarPath;
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError(string.Empty, "Nie udało się zresetować avatara");
+                return Page();
+            }
+
+            return RedirectToPage();
         }
 
         public async Task<IActionResult> OnPostUploadAvatarAsync()

@@ -11,9 +11,13 @@
 <div class="row">
     <div class="col-md-6">
         <img src="~/Images/@Model.Avatar" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px;">
+
         <form method="post" enctype="multipart/form-data" asp-page-handler="UploadAvatar" class="mt-4">
             <input type="file" name="AvatarFile" class="form-control mb-3">
             <button type="submit" class="btn btn-primary">Upload Avatar</button>
+        </form>
+        <form method="post" asp-page-handler="ResetAvatar" class="mt-3">
+            <button type="submit" class="btn btn-warning">Resetuj Avatar</button>
         </form>
         <form id="profile-form" method="post" class="mt-4">
 
