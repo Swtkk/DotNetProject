@@ -24,8 +24,8 @@ public class UserController : Controller
             {
                 Id = u.Id,
                 UserName = u.UserName,
-                Role = _context.Roles.FirstOrDefault(r=>
-                    _context.UserRoles.FirstOrDefault(ur=> ur.UserId == u.Id).RoleId == r.Id).Name
+                Role = _context.Roles.FirstOrDefault(r =>
+                    _context.UserRoles.FirstOrDefault(ur => ur.UserId == u.Id).RoleId == r.Id).Name
             })
             .OrderBy(c => c.UserName)
             .Skip((pageNumber - 1) * SD.PageSize)
@@ -34,10 +34,10 @@ public class UserController : Controller
         int totalUsers = _context.Users.Count();
         ViewBag.CurrentPage = pageNumber;
         ViewBag.TotalPages = (int)Math.Ceiling(totalUsers / (double)SD.PageSize);
-        
+
         return View(users);
     }
-    
+
     // GET: Szczegóły użytkownika
     public IActionResult Details(string id)
     {
@@ -46,6 +46,7 @@ public class UserController : Controller
         {
             return NotFound();
         }
+
         return View(user);
     }
 
@@ -75,14 +76,21 @@ public class UserController : Controller
         return View(user);
     }
 
-    // POST: Edytowanie użytkownika
+  
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Edit(User user)
     {
+
         if (!ModelState.IsValid)
         {
-            // Ponowne załadowanie listy ról na wypadek błędu walidacji
+            // Wyświetl błędy walidacji w konsoli
+            foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            {
+                Console.WriteLine($"Błąd: {error.ErrorMessage}");
+            }
+
+            // Ponowne załadowanie listy ról w przypadku błędu
             ViewBag.Roles = _context.Roles.Select(r => new SelectListItem
             {
                 Value = r.Name,
@@ -94,6 +102,7 @@ public class UserController : Controller
         var existingUser = _context.Users.FirstOrDefault(u => u.Id == user.Id);
         if (existingUser == null)
         {
+            Console.WriteLine("Nie znaleziono użytkownika w bazie danych.");
             return NotFound();
         }
 
@@ -106,6 +115,7 @@ public class UserController : Controller
         {
             _context.UserRoles.Remove(userRole);
         }
+
         var newRole = _context.Roles.FirstOrDefault(r => r.Name == user.Role);
         if (newRole != null)
         {
@@ -115,10 +125,23 @@ public class UserController : Controller
                 RoleId = newRole.Id
             });
         }
+        else
+        {
+            Console.WriteLine("Nie znaleziono nowej roli w bazie danych.");
+            ModelState.AddModelError("", "Nie znaleziono nowej roli w bazie danych.");
+            ViewBag.Roles = _context.Roles.Select(r => new SelectListItem
+            {
+                Value = r.Name,
+                Text = r.Name
+            }).ToList();
+            return View(user);
+        }
 
         _context.SaveChanges();
+
         return RedirectToAction(nameof(Index));
     }
+
 
     // GET: Usuwanie użytkownika
     public IActionResult Delete(string id)
@@ -128,6 +151,7 @@ public class UserController : Controller
         {
             return NotFound();
         }
+
         return View(user);
     }
 

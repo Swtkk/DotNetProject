@@ -18,7 +18,7 @@ namespace WebApplication1.Models
         // [Required]
         // public string PasswordHash { get; set; }
 
-        public string Avatar { get; set; }
+        public string? Avatar { get; set; }
         // public string Rank { get; set; }
         public DateTime LastActive { get; set; }
 

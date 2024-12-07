@@ -69,7 +69,36 @@ public class MessageController : Controller
         return RedirectToAction("Details", "Post", new { id = message.PostId });
     }
 
+    [HttpGet]
+    public IActionResult ReportedMessages()
+    {
+        var reportedMessages = _context.Messages
+            .Include(m => m.User)
+            .Include(m => m.Post)
+            .Include(m => m.Attachments)
+            .Where(m => m.IsReported)
+            .ToList();
 
+        return View(reportedMessages);
+    }
+    
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> MarkAsNotReported(int id)
+    {
+        var message = await _context.Messages.FindAsync(id);
+        if (message == null)
+        {
+            return NotFound();
+        }
+
+        // Ustaw zgłoszenie na "false"
+        message.IsReported = false;
+        await _context.SaveChangesAsync();
+
+        // Przekieruj z powrotem do listy zgłoszonych wiadomości
+        return RedirectToAction(nameof(ReportedMessages));
+    }
     [HttpPost]
     public async Task<IActionResult> Report(int id)
     {

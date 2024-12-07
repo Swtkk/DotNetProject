@@ -6,7 +6,7 @@ using WebApplication1.Utility;
 
 namespace WebApplication1.Controllers;
 
-[Authorize(Roles = SD.Role_Admin)]
+// [Authorize(Roles = SD.Role_Moderator)]
 public class CategoryController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -49,7 +49,7 @@ public class CategoryController : Controller
         {
             _context.Categories.Add(category);
             _context.SaveChanges();
-            return RedirectToAction(nameof(Index)); // Przekierowanie do listy kategorii po dodaniu
+            return RedirectToAction(nameof(Index)); 
         }
 
         return View(category);
@@ -57,7 +57,6 @@ public class CategoryController : Controller
 
     public IActionResult Details(int id, int pageNumber = 1)
     {
-
         // Sprawdzenie, czy kategoria istnieje
         var category = _context.Categories
             .FirstOrDefault(c => c.CategoryId == id);
@@ -105,22 +104,5 @@ public class CategoryController : Controller
     }
 
 
-    // [HttpPost]
-    // [ValidateAntiForgeryToken]
-    // public IActionResult Edit(Post post)
-    // {
-    //     if (!ModelState.IsValid)
-    //     {
-    //         return View(post);
-    //     }
-    //
-    //     var existingPost = _context.Posts.Find(post.PostId);
-    //     if (existingPost == null) return NotFound();
-    //
-    //     existingPost.Title = post.Title;
-    //     existingPost.Content = post.Content;
-    //     existingPost.IsPinned = post.IsPinned;
-    //     _context.SaveChanges();
-    //     return RedirectToAction("Details", "Category", new { id = post.CategoryId });
-    // }
+  
 }

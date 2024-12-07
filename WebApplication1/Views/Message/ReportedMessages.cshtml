@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebApplication1.Models.Message>
+
+<h2>Zgłoszone wiadomości</h2>
+
+<table class="table table-bordered table-striped">
+    <thead >
+    <tr>
+        <th class="col-md-5">Treść</th>
+        <th class="col-md-2">Użytkownik</th>
+        <th class="col-md-1">Załączniki</th>
+        <th class="col-md-2">Data utworzenia</th>
+        <th class="col-md-2">Wątek</th>
+        <th class="col-md-2">Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var message in Model)
+    {
+    <tr>
+        <td>@message.Content</td>
+        <td>@message.User?.UserName</td>
+        <td>
+            @if (message.Attachments != null && message.Attachments.Any())
+            {
+            <ul>
+                @foreach (var attachment in message.Attachments)
+                {
+                <li>
+                    <a href="~/Attachments/@attachment.FilePath" target="_blank">@attachment.FileName</a>
+                </li>
+                }
+            </ul>
+            }
+        </td>
+        <td>@message.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+        <td>
+            <a asp-controller="Post" asp-action="Details" asp-route-id="@message.PostId">@message.Post?.Title</a>
+        </td>
+        <td>
+            <div class="d-grid gap-2">
+                <form asp-controller="Message" asp-action="Delete" asp-route-id="@message.MessageId" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-danger btn-sm">Usuń wiadomość</button>
+                </form>
+                <form asp-controller="Message" asp-action="MarkAsNotReported" asp-route-id="@message.MessageId" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-warning btn-sm">Usuń zgłoszenie</button>
+                </form>
+            </div>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>

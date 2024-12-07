@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Models;
+using WebApplication1.Utility;
 
 namespace WebApplication1.Controllers;
 
@@ -47,18 +48,26 @@ public class PostController : Controller
     }
 
     // GET: Wyświetla szczegóły wątku i listę wiadomości
-    public IActionResult Details(int id)
+    public IActionResult Details(int id, int pageNumber =1)
     {
+        int messageDisplay = 15;
         var post = _context.Posts
             .Include(p => p.Messages)
-            .ThenInclude(m=>m.Attachments)
-            .Include(p=>p.Messages)
-            .ThenInclude((m=> m.User))
+            .ThenInclude(m => m.Attachments)
+            .Include(p => p.Messages)
+            .ThenInclude((m => m.User))
             .FirstOrDefault(p => p.PostId == id);
-        
-
         if (post == null) return NotFound();
-
+        
+        var messages = post.Messages
+            .OrderBy(c=>c.CreatedAt)
+            .Skip((pageNumber - 1) * messageDisplay)
+            .Take(messageDisplay)
+            .ToList();
+        
+        ViewBag.CurrentPage = pageNumber;
+        ViewBag.TotalPages = (int)Math.Ceiling(post.Messages.Count / (double)messageDisplay);
+        post.Messages = messages;
         
         return View(post);
     }

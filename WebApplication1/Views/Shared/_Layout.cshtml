@@ -39,26 +39,14 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Użytkownicy</a>
                         </li>
                     }
+                    @if ((User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Moderator) ))
+                    {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Message" asp-action="ReportedMessages">Zgłoszone wiadomości</a>
+                    </li>
+                    }
                 </ul>
                 <partial name="_LoginPartial"/>
-                @* <ul class="navbar-nav"> *@
-                @*     $1$ @if (User.Identity.IsAuthenticated) #1# *@
-                @*     $1$ { #1# *@
-                @*         <li class="nav-item"> *@
-                @*             <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Login">Login</a> *@
-                @*         </li> *@
-                @*     $1$ } #1# *@
-                @*     $1$ else #1# *@
-                @*     $1$ { #1# *@
-                @*     <!-- Przycisk Login --> *@
-                @*     <li class="nav-item"> *@
-                @*          *@
-                @*         <form asp-controller="Account" asp-action="Logout" method="post" class="form-inline"> *@
-                @*             <button type="submit" class="btn btn-outline-danger">Logout</button> *@
-                @*         </form> *@
-                @*     </li> *@
-                @* } *@
-                @* </ul> *@
             </div>
         </div>
     </nav>
