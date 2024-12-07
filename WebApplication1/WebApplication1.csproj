@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <Folder Include="apdb\" />
+      <Folder Include="Images\" />
     </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 ﻿@using System.Net
+@using Microsoft.AspNetCore.Http;
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,9 +35,9 @@
                     </li>
                     @if (User.IsInRole(SD.Role_Admin))
                     {
-                    <li class="nav-item px-3">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Użytkownicy</a>
-                    </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Użytkownicy</a>
+                        </li>
                     }
                 </ul>
                 <partial name="_LoginPartial"/>
@@ -56,7 +57,7 @@
                 @*             <button type="submit" class="btn btn-outline-danger">Logout</button> *@
                 @*         </form> *@
                 @*     </li> *@
-                    @* } *@
+                @* } *@
                 @* </ul> *@
             </div>
         </div>
@@ -73,6 +74,30 @@
         &copy; 2024 - WebApplication1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
+@if (Context.User.Identity.IsAuthenticated)
+{
+    <script>
+        const sessionTimeout = 900; 
+
+        function redirectToLogin() {
+            window.location.href = '/Identity/Account/Login'; 
+        }
+        
+        let timeout = setTimeout(redirectToLogin, sessionTimeout * 1000);
+
+ 
+        function resetTimer() {
+            clearTimeout(timeout);
+            timeout = setTimeout(redirectToLogin, sessionTimeout * 1000);
+        }
+
+       
+        window.onload = resetTimer;
+        document.onmousemove = resetTimer;
+        document.onkeypress = resetTimer;
+        document.ontouchstart = resetTimer; 
+    </script>
+}
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
