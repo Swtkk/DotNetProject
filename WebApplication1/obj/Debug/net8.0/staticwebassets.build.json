@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jHPyIC03Njue77cBWvaG298jAwEZ0a0ICQlEi8obO7E=",
+  "Hash": "2xDNWkd+L9vWs0v0UyhBFF0OW+iBM+JOt8Wj3+g95Xk=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
@@ -1317,6 +1317,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApplication1.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\18ae749f-43db-4aa4-b249-d414c5aa802b_MG_en (1).pdf",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/18ae749f-43db-4aa4-b249-d414c5aa802b_MG_en (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "85a2d6ln6h",
+      "Integrity": "JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\18ae749f-43db-4aa4-b249-d414c5aa802b_MG_en (1).pdf"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\3fdcf6ae-7ec3-4160-9a1b-83eb74964662_legitka.jpg",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/3fdcf6ae-7ec3-4160-9a1b-83eb74964662_legitka#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "y5glm9c62r",
+      "Integrity": "Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\3fdcf6ae-7ec3-4160-9a1b-83eb74964662_legitka.jpg"
     },
     {
       "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka.jpg",
@@ -2833,6 +2875,170 @@
   ],
   "Endpoints": [
     {
+      "Route": "Attachments/18ae749f-43db-4aa4-b249-d414c5aa802b_MG_en (1).85a2d6ln6h.pdf",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\18ae749f-43db-4aa4-b249-d414c5aa802b_MG_en (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "85a2d6ln6h"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/18ae749f-43db-4aa4-b249-d414c5aa802b_MG_en (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/18ae749f-43db-4aa4-b249-d414c5aa802b_MG_en (1).pdf",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\18ae749f-43db-4aa4-b249-d414c5aa802b_MG_en (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/3fdcf6ae-7ec3-4160-9a1b-83eb74964662_legitka.jpg",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\3fdcf6ae-7ec3-4160-9a1b-83eb74964662_legitka.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/3fdcf6ae-7ec3-4160-9a1b-83eb74964662_legitka.y5glm9c62r.jpg",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\3fdcf6ae-7ec3-4160-9a1b-83eb74964662_legitka.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y5glm9c62r"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/3fdcf6ae-7ec3-4160-9a1b-83eb74964662_legitka.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE="
+        }
+      ]
+    },
+    {
       "Route": "Attachments/40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka.jpg",
       "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka.jpg",
       "Selectors": [],
@@ -2855,7 +3061,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 13:11:24 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2892,7 +3098,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 13:11:24 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2937,7 +3143,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 13:10:53 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2974,7 +3180,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 13:10:53 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3019,7 +3225,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 11:43:58 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3064,7 +3270,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 11:43:58 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3101,7 +3307,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 13:29:01 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3146,7 +3352,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 13:29:01 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3183,7 +3389,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 13:28:49 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3228,7 +3434,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 13:28:49 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3265,7 +3471,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 13:26:12 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3302,7 +3508,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 13:26:12 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3347,7 +3553,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 11:51:03 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3392,7 +3598,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 11:51:03 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3429,7 +3635,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 13:28:38 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3466,7 +3672,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 13:28:38 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3511,7 +3717,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 11:44:14 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3548,7 +3754,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 11:44:14 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3593,7 +3799,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Dec 2024 18:39:58 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3638,7 +3844,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Dec 2024 18:39:58 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5977,7 +6183,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 10:53:16 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6022,7 +6228,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 10:53:16 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6059,7 +6265,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 11:08:04 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6096,7 +6302,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 11:08:04 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6141,7 +6347,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 10:13:43 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6186,7 +6392,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 10:13:43 GMT"
+          "Value": "Sat, 07 Dec 2024 13:35:40 GMT"
         },
         {
           "Name": "Cache-Control",
