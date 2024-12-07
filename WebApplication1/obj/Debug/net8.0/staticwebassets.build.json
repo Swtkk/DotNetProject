@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "A+CYImo0HMApxVeXoZgVvCyNg1gSzzzW+z3N9Ph8S7g=",
+  "Hash": "jHPyIC03Njue77cBWvaG298jAwEZ0a0ICQlEi8obO7E=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
@@ -1319,6 +1319,195 @@
       "OriginalItemSpec": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApplication1.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka.jpg",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "y5glm9c62r",
+      "Integrity": "Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.jpg",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/52df6537-a143-41fb-a56b-103a5ad8be0d_legitka#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "y5glm9c62r",
+      "Integrity": "Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\71e0ad66-37e0-4e6e-88d1-4b8f573a5567_MG_en (1).pdf",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/71e0ad66-37e0-4e6e-88d1-4b8f573a5567_MG_en (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "85a2d6ln6h",
+      "Integrity": "JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\71e0ad66-37e0-4e6e-88d1-4b8f573a5567_MG_en (1).pdf"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\791d922c-feed-45ca-ad85-cd42146fb57b_MG_en (1).pdf",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/791d922c-feed-45ca-ad85-cd42146fb57b_MG_en (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "85a2d6ln6h",
+      "Integrity": "JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\791d922c-feed-45ca-ad85-cd42146fb57b_MG_en (1).pdf"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\8ccc52e9-e12f-4314-a9e9-29c0f9ece5ae_MG_en (1).pdf",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/8ccc52e9-e12f-4314-a9e9-29c0f9ece5ae_MG_en (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "85a2d6ln6h",
+      "Integrity": "JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\8ccc52e9-e12f-4314-a9e9-29c0f9ece5ae_MG_en (1).pdf"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\95fdba9d-b800-477f-8d3a-a4768370f981_legitka.jpg",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/95fdba9d-b800-477f-8d3a-a4768370f981_legitka#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "y5glm9c62r",
+      "Integrity": "Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\95fdba9d-b800-477f-8d3a-a4768370f981_legitka.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\caab84f6-79d0-4168-a1f7-8507879615a8_MG_en (1).pdf",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/caab84f6-79d0-4168-a1f7-8507879615a8_MG_en (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "85a2d6ln6h",
+      "Integrity": "JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\caab84f6-79d0-4168-a1f7-8507879615a8_MG_en (1).pdf"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\dff97528-1240-41d7-bd63-d1b4c5da8dea_legitka.jpg",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/dff97528-1240-41d7-bd63-d1b4c5da8dea_legitka#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "y5glm9c62r",
+      "Integrity": "Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\dff97528-1240-41d7-bd63-d1b4c5da8dea_legitka.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\f5440ca0-4d17-49ec-b51b-c4570a9ba7ba_obraz_2024-12-07_124413540.png",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/f5440ca0-4d17-49ec-b51b-c4570a9ba7ba_obraz_2024-12-07_124413540#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "tln4ia4fe4",
+      "Integrity": "f/VkmWcf2/XY34eiy7LP1ZfM9sQ0XBCKQmXCmXAfKG8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\f5440ca0-4d17-49ec-b51b-c4570a9ba7ba_obraz_2024-12-07_124413540.png"
+    },
+    {
       "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\css\\site.css",
       "SourceId": "WebApplication1",
       "SourceType": "Discovered",
@@ -1380,6 +1569,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\617c7e89-1879-463d-82c6-6456850c705c_tap1.png"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\9792ea3a-9f0f-4866-993a-6fc1001b2ce0_tap2.png",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Images/9792ea3a-9f0f-4866-993a-6fc1001b2ce0_tap2#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "xaz0kjei66",
+      "Integrity": "udL8buXyCa4IGvRfh6a98PZSNFfKRXIfUA/GjRnSlHM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\9792ea3a-9f0f-4866-993a-6fc1001b2ce0_tap2.png"
     },
     {
       "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\userAvatar.png",
@@ -2622,6 +2832,744 @@
     }
   ],
   "Endpoints": [
+    {
+      "Route": "Attachments/40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka.jpg",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:11:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka.y5glm9c62r.jpg",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:11:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y5glm9c62r"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.jpg",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:10:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.y5glm9c62r.jpg",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:10:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y5glm9c62r"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/71e0ad66-37e0-4e6e-88d1-4b8f573a5567_MG_en (1).85a2d6ln6h.pdf",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\71e0ad66-37e0-4e6e-88d1-4b8f573a5567_MG_en (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 11:43:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "85a2d6ln6h"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/71e0ad66-37e0-4e6e-88d1-4b8f573a5567_MG_en (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/71e0ad66-37e0-4e6e-88d1-4b8f573a5567_MG_en (1).pdf",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\71e0ad66-37e0-4e6e-88d1-4b8f573a5567_MG_en (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 11:43:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/791d922c-feed-45ca-ad85-cd42146fb57b_MG_en (1).85a2d6ln6h.pdf",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\791d922c-feed-45ca-ad85-cd42146fb57b_MG_en (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:29:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "85a2d6ln6h"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/791d922c-feed-45ca-ad85-cd42146fb57b_MG_en (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/791d922c-feed-45ca-ad85-cd42146fb57b_MG_en (1).pdf",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\791d922c-feed-45ca-ad85-cd42146fb57b_MG_en (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:29:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/8ccc52e9-e12f-4314-a9e9-29c0f9ece5ae_MG_en (1).85a2d6ln6h.pdf",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\8ccc52e9-e12f-4314-a9e9-29c0f9ece5ae_MG_en (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:28:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "85a2d6ln6h"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/8ccc52e9-e12f-4314-a9e9-29c0f9ece5ae_MG_en (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/8ccc52e9-e12f-4314-a9e9-29c0f9ece5ae_MG_en (1).pdf",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\8ccc52e9-e12f-4314-a9e9-29c0f9ece5ae_MG_en (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:28:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/95fdba9d-b800-477f-8d3a-a4768370f981_legitka.jpg",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\95fdba9d-b800-477f-8d3a-a4768370f981_legitka.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:26:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/95fdba9d-b800-477f-8d3a-a4768370f981_legitka.y5glm9c62r.jpg",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\95fdba9d-b800-477f-8d3a-a4768370f981_legitka.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:26:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y5glm9c62r"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/95fdba9d-b800-477f-8d3a-a4768370f981_legitka.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/caab84f6-79d0-4168-a1f7-8507879615a8_MG_en (1).85a2d6ln6h.pdf",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\caab84f6-79d0-4168-a1f7-8507879615a8_MG_en (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 11:51:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "85a2d6ln6h"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/caab84f6-79d0-4168-a1f7-8507879615a8_MG_en (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/caab84f6-79d0-4168-a1f7-8507879615a8_MG_en (1).pdf",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\caab84f6-79d0-4168-a1f7-8507879615a8_MG_en (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 11:51:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JEvjyZQPC43w9QzBXF2owTA3eRyI1rfvhrFykjopPSo="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/dff97528-1240-41d7-bd63-d1b4c5da8dea_legitka.jpg",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\dff97528-1240-41d7-bd63-d1b4c5da8dea_legitka.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:28:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/dff97528-1240-41d7-bd63-d1b4c5da8dea_legitka.y5glm9c62r.jpg",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\dff97528-1240-41d7-bd63-d1b4c5da8dea_legitka.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 13:28:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y5glm9c62r"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/dff97528-1240-41d7-bd63-d1b4c5da8dea_legitka.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/f5440ca0-4d17-49ec-b51b-c4570a9ba7ba_obraz_2024-12-07_124413540.png",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\f5440ca0-4d17-49ec-b51b-c4570a9ba7ba_obraz_2024-12-07_124413540.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31566"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"f/VkmWcf2/XY34eiy7LP1ZfM9sQ0XBCKQmXCmXAfKG8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 11:44:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-f/VkmWcf2/XY34eiy7LP1ZfM9sQ0XBCKQmXCmXAfKG8="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/f5440ca0-4d17-49ec-b51b-c4570a9ba7ba_obraz_2024-12-07_124413540.tln4ia4fe4.png",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\f5440ca0-4d17-49ec-b51b-c4570a9ba7ba_obraz_2024-12-07_124413540.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31566"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"f/VkmWcf2/XY34eiy7LP1ZfM9sQ0XBCKQmXCmXAfKG8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 11:44:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tln4ia4fe4"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/f5440ca0-4d17-49ec-b51b-c4570a9ba7ba_obraz_2024-12-07_124413540.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-f/VkmWcf2/XY34eiy7LP1ZfM9sQ0XBCKQmXCmXAfKG8="
+        }
+      ]
+    },
     {
       "Route": "css/site.6su49yx178.css",
       "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\css\\site.css",
@@ -5085,6 +6033,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-WBY03ZSHNzENafJ8cZa6CEWf3D2FpFbvBBX+bboTCfc="
+        }
+      ]
+    },
+    {
+      "Route": "Images/9792ea3a-9f0f-4866-993a-6fc1001b2ce0_tap2.png",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\9792ea3a-9f0f-4866-993a-6fc1001b2ce0_tap2.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1960009"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"udL8buXyCa4IGvRfh6a98PZSNFfKRXIfUA/GjRnSlHM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 11:08:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-udL8buXyCa4IGvRfh6a98PZSNFfKRXIfUA/GjRnSlHM="
+        }
+      ]
+    },
+    {
+      "Route": "Images/9792ea3a-9f0f-4866-993a-6fc1001b2ce0_tap2.xaz0kjei66.png",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\9792ea3a-9f0f-4866-993a-6fc1001b2ce0_tap2.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1960009"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"udL8buXyCa4IGvRfh6a98PZSNFfKRXIfUA/GjRnSlHM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 11:08:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xaz0kjei66"
+        },
+        {
+          "Name": "label",
+          "Value": "Images/9792ea3a-9f0f-4866-993a-6fc1001b2ce0_tap2.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-udL8buXyCa4IGvRfh6a98PZSNFfKRXIfUA/GjRnSlHM="
         }
       ]
     },
@@ -9949,7 +10979,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Oct 2024 10:49:33 GMT"
+          "Value": "Sat, 07 Dec 2024 13:03:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9986,7 +11016,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Oct 2024 10:49:33 GMT"
+          "Value": "Sat, 07 Dec 2024 13:03:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10023,7 +11053,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Oct 2024 10:49:33 GMT"
+          "Value": "Sat, 07 Dec 2024 13:03:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10068,7 +11098,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Oct 2024 10:49:33 GMT"
+          "Value": "Sat, 07 Dec 2024 13:03:34 GMT"
         },
         {
           "Name": "Cache-Control",

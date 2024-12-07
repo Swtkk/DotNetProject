@@ -12,6 +12,7 @@ namespace WebApplication1.Data
         public DbSet<Post> Posts { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<PrivateMessage> PrivateMessages { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -54,6 +55,11 @@ namespace WebApplication1.Data
                 .WithOne(pm => pm.Receiver)
                 .HasForeignKey(pm => pm.ReceiverId)
                 .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Message>()
+                .HasMany(m =>m.Attachments)
+                .WithOne(a => a.Message)
+                .HasForeignKey(a => a.MessageId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -1,8 +1,26 @@
-﻿@model TModel
-
+﻿@model WebApplication1.Models.Message
 @{
-    ViewBag.Title = "title";
     Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>Edytuj Wiadomość</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="MessageId" />
+    <input type="hidden" asp-for="PostId" />
+
+    <div class="form-group">
+        <label asp-for="Content" class="control-label">Treść wiadomości</label>
+        <textarea asp-for="Content" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Dodaj nowe załączniki</label>
+        <input type="file" name="Attachments" multiple class="form-control" />
+        <small class="form-text text-muted">Dozwolone formaty: .jpg, .png, .pdf. Maks. 1 plik, 2 MB.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+    <a asp-action="Details" asp-controller="Post" asp-route-id="@Model.PostId" class="btn btn-secondary">Anuluj</a>
+</form>
+

@@ -22,9 +22,9 @@ Layout = "_Layout";
     <div class="list-group-item d-flex align-items-center justify-content-between">
         <!-- Avatar i nazwa użytkownika -->
         <div class="d-flex align-items-center">
-            @* <img src="@message.User.Avatar" alt="Avatar" class="rounded-circle me-3" style="width: 50px; height: 50px;"> *@
+            <img src="~/Images/@message.User.Avatar" alt="Avatar" class="rounded-circle me-3" style="width: 50px; height: 50px;">
             <div>
-                @* <strong>@message.User.DisplayName</strong> *@
+                <strong>@message.User.UserName</strong>
                 <br />
                 <small class="text-muted">@message.CreatedAt.ToString("yyyy-MM-dd HH:mm")</small>
             </div>
@@ -33,6 +33,24 @@ Layout = "_Layout";
         <!-- Treść wiadomości -->
         <div class="flex-grow-1 mx-3">
             <p>@message.Content</p>
+            @if (message.Attachments?.Any() == true)
+            {
+            <div>
+                <strong>Załączniki:</strong>
+                <ul>
+                    @foreach (var attachment in message.Attachments)
+                    {
+                    <li>
+                        <a href="~/Attachments/@attachment.FilePath" target="_blank" download="@attachment.FileName">@attachment.FileName</a>
+                        <form asp-action="DeleteAttachment" asp-controller="Post" method="post" class="d-inline">
+                            <input type="hidden" name="AttachmentId" value="@attachment.AttachmentId" />
+                            <button type="submit" class="btn btn-sm btn-danger">Usuń</button>
+                        </form>
+                    </li>
+                    }
+                </ul>
+            </div>
+            }
         </div>
 
         <!-- Przyciski akcji -->
@@ -48,10 +66,14 @@ Layout = "_Layout";
 
 <!-- Formularz dodawania nowej wiadomości -->
 <h4>Dodaj wiadomość:</h4>
-<form asp-controller="Message" asp-action="Create" method="post">
+<form asp-controller="Message" asp-action="Create" method="post" enctype="multipart/form-data">
     <input type="hidden" name="PostId" value="@Model.PostId" />
     <div class="form-group">
         <textarea name="Content" class="form-control" rows="3" placeholder="Wpisz swoją wiadomość..."></textarea>
+    </div>
+    <div class="form-group">
+        <input type="file" name="Attachments" multiple class="form-control" />
+        <small class="form-text text-muted">Dozwolone formaty: .jpg, .png, .pdf. Maks. 5 plików, 2 MB każdy.</small>
     </div>
     <button type="submit" class="btn btn-success mt-2">Dodaj wiadomość</button>
 </form>
