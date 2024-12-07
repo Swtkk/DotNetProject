@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LS1V3bYPkHozFN/ISi8bg3jsK45MjAaz9JlhZXogLuc=",
+  "Hash": "A+CYImo0HMApxVeXoZgVvCyNg1gSzzzW+z3N9Ph8S7g=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
@@ -1359,6 +1359,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\617c7e89-1879-463d-82c6-6456850c705c_tap1.png",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Images/617c7e89-1879-463d-82c6-6456850c705c_tap1#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "c7hd2jxs52",
+      "Integrity": "WBY03ZSHNzENafJ8cZa6CEWf3D2FpFbvBBX+bboTCfc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\617c7e89-1879-463d-82c6-6456850c705c_tap1.png"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\userAvatar.png",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Images/userAvatar#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "izcia6vkqt",
+      "Integrity": "wtt0UTgT9uSEHPHhvyx0g2fmtz2lCA2wzWSoxuuR5p8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\userAvatar.png"
     },
     {
       "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\js\\site.js",
@@ -4961,6 +5003,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk="
+        }
+      ]
+    },
+    {
+      "Route": "Images/617c7e89-1879-463d-82c6-6456850c705c_tap1.c7hd2jxs52.png",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\617c7e89-1879-463d-82c6-6456850c705c_tap1.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1665222"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WBY03ZSHNzENafJ8cZa6CEWf3D2FpFbvBBX+bboTCfc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 10:53:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c7hd2jxs52"
+        },
+        {
+          "Name": "label",
+          "Value": "Images/617c7e89-1879-463d-82c6-6456850c705c_tap1.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WBY03ZSHNzENafJ8cZa6CEWf3D2FpFbvBBX+bboTCfc="
+        }
+      ]
+    },
+    {
+      "Route": "Images/617c7e89-1879-463d-82c6-6456850c705c_tap1.png",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\617c7e89-1879-463d-82c6-6456850c705c_tap1.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1665222"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WBY03ZSHNzENafJ8cZa6CEWf3D2FpFbvBBX+bboTCfc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 10:53:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WBY03ZSHNzENafJ8cZa6CEWf3D2FpFbvBBX+bboTCfc="
+        }
+      ]
+    },
+    {
+      "Route": "Images/userAvatar.izcia6vkqt.png",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\userAvatar.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2108"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wtt0UTgT9uSEHPHhvyx0g2fmtz2lCA2wzWSoxuuR5p8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 10:13:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "izcia6vkqt"
+        },
+        {
+          "Name": "label",
+          "Value": "Images/userAvatar.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wtt0UTgT9uSEHPHhvyx0g2fmtz2lCA2wzWSoxuuR5p8="
+        }
+      ]
+    },
+    {
+      "Route": "Images/userAvatar.png",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\userAvatar.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2108"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wtt0UTgT9uSEHPHhvyx0g2fmtz2lCA2wzWSoxuuR5p8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 10:13:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wtt0UTgT9uSEHPHhvyx0g2fmtz2lCA2wzWSoxuuR5p8="
         }
       ]
     },

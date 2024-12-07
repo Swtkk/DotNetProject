@@ -1,5 +1,6 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
+
 #nullable disable
 
 using System;
@@ -17,13 +18,18 @@ namespace WebApplication1.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        [BindProperty] public IFormFile AvatarFile { get; set; }
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public string Avatar { get; set; }
 
         public IndexModel(
             UserManager<User> userManager,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager,
+            IWebHostEnvironment webHostEnvironment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         /// <summary>
@@ -74,6 +80,56 @@ namespace WebApplication1.Areas.Identity.Pages.Account.Manage
             };
         }
 
+        public async Task<IActionResult> OnPostUploadAvatarAsync()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return RedirectToPage("/Account/Login");
+            }
+
+            if (AvatarFile != null)
+            {
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                var extension = Path.GetExtension(AvatarFile.FileName).ToLower();
+
+                if (!allowedExtensions.Contains(extension))
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid file type.");
+                    return Page();
+                }
+
+                var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Images");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                if (!string.IsNullOrEmpty(user.Avatar) && user.Avatar != "userAvatar.png")
+                {
+                    var oldFilePath = Path.Combine(uploadsFolder, user.Avatar);
+                    if (System.IO.File.Exists(oldFilePath))
+                    {
+                        System.IO.File.Delete(oldFilePath);
+                    }
+                }
+
+                var uniqueFileName = Guid.NewGuid().ToString() + "_" + AvatarFile.FileName;
+                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await AvatarFile.CopyToAsync(fileStream);
+                }
+
+                user.Avatar = uniqueFileName;
+                await _userManager.UpdateAsync(user);
+            }
+
+            return RedirectToPage();
+        }
+
+
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -82,6 +138,7 @@ namespace WebApplication1.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
+            Avatar = user.Avatar;
             await LoadAsync(user);
             return Page();
         }

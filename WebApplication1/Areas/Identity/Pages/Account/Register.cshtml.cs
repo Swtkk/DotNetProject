@@ -36,7 +36,7 @@ namespace WebApplication1.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<User> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-
+        private const string DefaultAvatarPath = "userAvatar.png";
         public RegisterModel(
             UserManager<User> userManager,
             IUserStore<User> userStore,
@@ -143,7 +143,8 @@ namespace WebApplication1.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-
+                user.Avatar = DefaultAvatarPath;
+                
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);

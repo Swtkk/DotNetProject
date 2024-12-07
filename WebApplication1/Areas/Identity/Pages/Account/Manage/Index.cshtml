@@ -1,18 +1,25 @@
 ﻿@page
 @model IndexModel
+
 @{
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
 <h3>@ViewData["Title"]</h3>
-<partial name="_StatusMessage" for="StatusMessage" />
+<partial name="_StatusMessage" for="StatusMessage"/>
 <div class="row">
     <div class="col-md-6">
-        <form id="profile-form" method="post">
+        <img src="~/Images/@Model.Avatar" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px;">
+        <form method="post" enctype="multipart/form-data" asp-page-handler="UploadAvatar" class="mt-4">
+            <input type="file" name="AvatarFile" class="form-control mb-3">
+            <button type="submit" class="btn btn-primary">Upload Avatar</button>
+        </form>
+        <form id="profile-form" method="post" class="mt-4">
+
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
-                <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
+                <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled/>
                 <label asp-for="Username" class="form-label"></label>
             </div>
             <div class="form-floating mb-3">
@@ -26,5 +33,5 @@
 </div>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial"/>
 }

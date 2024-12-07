@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\WebApplication1.yj6fvmmoe8.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\617c7e89-1879-463d-82c6-6456850c705c_tap1.png",
+      "PackagePath": "staticwebassets\\Images\\617c7e89-1879-463d-82c6-6456850c705c_tap1.png"
+    },
+    {
+      "Id": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\userAvatar.png",
+      "PackagePath": "staticwebassets\\Images\\userAvatar.png"
+    },
+    {
       "Id": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
