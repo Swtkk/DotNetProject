@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hXKXu97GAEfZYcwkRdQid1z++o+VOCrIn5cQMuRFFWY=",
+  "Hash": "fmnBpgLYTYP0cqMzuzkOiFCWKhmV8YQ2hFwyh6TeeDs=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
@@ -1361,6 +1361,27 @@
       "OriginalItemSpec": "wwwroot\\Attachments\\52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.jpg"
     },
     {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\6e7cc499-ccc0-48a1-9ecb-32c2d796d031_projektRW.cpp",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/6e7cc499-ccc0-48a1-9ecb-32c2d796d031_projektRW#[.{fingerprint}]?.cpp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ls746znxwx",
+      "Integrity": "ix3K97b932LvfBWG2w49t8UL6ADeS9KS/7I13DnKBkQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\6e7cc499-ccc0-48a1-9ecb-32c2d796d031_projektRW.cpp"
+    },
+    {
       "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\dff97528-1240-41d7-bd63-d1b4c5da8dea_legitka.jpg",
       "SourceId": "WebApplication1",
       "SourceType": "Discovered",
@@ -1466,12 +1487,12 @@
       "OriginalItemSpec": "wwwroot\\Images\\22c53bb8-2a85-4b4d-ab7b-39d28bd23e0c_forum_discussion_diagram.png"
     },
     {
-      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\358c13fc-f433-4c89-9040-58c855da7032_forum_discussion_diagram.png",
+      "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\3fcb4a0f-627d-4bd8-8e7b-768568531b10_forum_discussion_diagram.png",
       "SourceId": "WebApplication1",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
       "BasePath": "_content/WebApplication1",
-      "RelativePath": "Images/358c13fc-f433-4c89-9040-58c855da7032_forum_discussion_diagram#[.{fingerprint}]?.png",
+      "RelativePath": "Images/3fcb4a0f-627d-4bd8-8e7b-768568531b10_forum_discussion_diagram#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1484,7 +1505,7 @@
       "Integrity": "05B7htP4JS1opSQU+OlGHBqVjF9Lwx0nwRHvxUoVi1Q=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\358c13fc-f433-4c89-9040-58c855da7032_forum_discussion_diagram.png"
+      "OriginalItemSpec": "wwwroot\\Images\\3fcb4a0f-627d-4bd8-8e7b-768568531b10_forum_discussion_diagram.png"
     },
     {
       "Identity": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\617c7e89-1879-463d-82c6-6456850c705c_tap1.png",
@@ -2951,6 +2972,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-Fh+b5lzrsANNCW1l7gWW3VXoAs2hjbnu6kgrLV3l7LE="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/6e7cc499-ccc0-48a1-9ecb-32c2d796d031_projektRW.cpp",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\6e7cc499-ccc0-48a1-9ecb-32c2d796d031_projektRW.cpp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10106"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ix3K97b932LvfBWG2w49t8UL6ADeS9KS/7I13DnKBkQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 10 Dec 2024 18:09:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ix3K97b932LvfBWG2w49t8UL6ADeS9KS/7I13DnKBkQ="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/6e7cc499-ccc0-48a1-9ecb-32c2d796d031_projektRW.ls746znxwx.cpp",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Attachments\\6e7cc499-ccc0-48a1-9ecb-32c2d796d031_projektRW.cpp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10106"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ix3K97b932LvfBWG2w49t8UL6ADeS9KS/7I13DnKBkQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 10 Dec 2024 18:09:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ls746znxwx"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/6e7cc499-ccc0-48a1-9ecb-32c2d796d031_projektRW.cpp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ix3K97b932LvfBWG2w49t8UL6ADeS9KS/7I13DnKBkQ="
         }
       ]
     },
@@ -5585,8 +5688,8 @@
       ]
     },
     {
-      "Route": "Images/358c13fc-f433-4c89-9040-58c855da7032_forum_discussion_diagram.fl9ltccj2c.png",
-      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\358c13fc-f433-4c89-9040-58c855da7032_forum_discussion_diagram.png",
+      "Route": "Images/3fcb4a0f-627d-4bd8-8e7b-768568531b10_forum_discussion_diagram.fl9ltccj2c.png",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\3fcb4a0f-627d-4bd8-8e7b-768568531b10_forum_discussion_diagram.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5607,7 +5710,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 21:51:37 GMT"
+          "Value": "Tue, 10 Dec 2024 18:09:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5621,7 +5724,7 @@
         },
         {
           "Name": "label",
-          "Value": "Images/358c13fc-f433-4c89-9040-58c855da7032_forum_discussion_diagram.png"
+          "Value": "Images/3fcb4a0f-627d-4bd8-8e7b-768568531b10_forum_discussion_diagram.png"
         },
         {
           "Name": "integrity",
@@ -5630,8 +5733,8 @@
       ]
     },
     {
-      "Route": "Images/358c13fc-f433-4c89-9040-58c855da7032_forum_discussion_diagram.png",
-      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\358c13fc-f433-4c89-9040-58c855da7032_forum_discussion_diagram.png",
+      "Route": "Images/3fcb4a0f-627d-4bd8-8e7b-768568531b10_forum_discussion_diagram.png",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\3fcb4a0f-627d-4bd8-8e7b-768568531b10_forum_discussion_diagram.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5652,7 +5755,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Dec 2024 21:51:37 GMT"
+          "Value": "Tue, 10 Dec 2024 18:09:15 GMT"
         },
         {
           "Name": "Cache-Control",

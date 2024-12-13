@@ -30,3 +30,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.textArea{
+  max-height: 300px;
+}

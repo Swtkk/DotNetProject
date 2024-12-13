@@ -36,6 +36,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Attachments\52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Attachments\6e7cc499-ccc0-48a1-9ecb-32c2d796d031_projektRW.cpp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebApplication1</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebApplication1</BasePath>
+      <RelativePath>Attachments/6e7cc499-ccc0-48a1-9ecb-32c2d796d031_projektRW.cpp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ls746znxwx</Fingerprint>
+      <Integrity>ix3K97b932LvfBWG2w49t8UL6ADeS9KS/7I13DnKBkQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Attachments\6e7cc499-ccc0-48a1-9ecb-32c2d796d031_projektRW.cpp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Attachments\dff97528-1240-41d7-bd63-d1b4c5da8dea_legitka.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>WebApplication1</SourceId>
@@ -126,12 +144,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\22c53bb8-2a85-4b4d-ab7b-39d28bd23e0c_forum_discussion_diagram.png'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\358c13fc-f433-4c89-9040-58c855da7032_forum_discussion_diagram.png'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\3fcb4a0f-627d-4bd8-8e7b-768568531b10_forum_discussion_diagram.png'))">
       <SourceType>Package</SourceType>
       <SourceId>WebApplication1</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/WebApplication1</BasePath>
-      <RelativePath>Images/358c13fc-f433-4c89-9040-58c855da7032_forum_discussion_diagram.png</RelativePath>
+      <RelativePath>Images/3fcb4a0f-627d-4bd8-8e7b-768568531b10_forum_discussion_diagram.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -142,7 +160,7 @@
       <Integrity>05B7htP4JS1opSQU+OlGHBqVjF9Lwx0nwRHvxUoVi1Q=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\358c13fc-f433-4c89-9040-58c855da7032_forum_discussion_diagram.png'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\3fcb4a0f-627d-4bd8-8e7b-768568531b10_forum_discussion_diagram.png'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\617c7e89-1879-463d-82c6-6456850c705c_tap1.png'))">
       <SourceType>Package</SourceType>

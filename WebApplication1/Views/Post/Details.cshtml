@@ -76,11 +76,13 @@ Layout = "_Layout";
 <form asp-controller="Message" asp-action="Create" method="post" enctype="multipart/form-data">
     <input type="hidden" name="PostId" value="@Model.PostId" />
     <div class="form-group">
-        <textarea name="Content" class="form-control" rows="3" placeholder="Wpisz swoją wiadomość..." required></textarea>
+        <label for="messageContent">Treść wiadomości:</label>
+        <textarea id="messageContent" name="Content" class="form-control textArea" rows="3" placeholder="Wpisz swoją wiadomość..." required></textarea>
+        <button type="button" id="emojiButton" class="btn btn-outline-secondary mt-2">😀 Dodaj emotikony</button>
     </div>
     <div class="form-group">
         <input type="file" name="Attachments" multiple class="form-control" />
-        <small class="form-text text-muted">Dozwolone formaty: .jpg, .png, .pdf. Maks. 5 plików, 2 MB każdy.</small>
+        <small class="form-text text-muted">Dozwolone formaty: .jpg, .png, .pdf. Maks. 1 plik 2 MB .</small>
     </div>
     <button type="submit" class="btn btn-success mt-2">Dodaj wiadomość</button>
 </form>

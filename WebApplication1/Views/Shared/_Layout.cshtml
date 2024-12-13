@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true"/>
+    
+
 </head>
 <body>
 <header>
@@ -62,6 +64,41 @@
         &copy; 2024 - WebApplication1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
+<script type="module">
+    import 'https://cdn.jsdelivr.net/npm/emoji-picker-element@1.6.0/index.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const emojiButton = document.querySelector('#emojiButton');
+        const messageContent = document.querySelector('#messageContent');
+
+        const picker = document.createElement('emoji-picker');
+        picker.style.position = 'absolute';
+        picker.style.display = 'none';
+        picker.style.zIndex = 1000;
+        document.body.appendChild(picker);
+
+        emojiButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const rect = emojiButton.getBoundingClientRect();
+            picker.style.top = `${rect.bottom + window.scrollY}px`;
+            picker.style.left = `${rect.left + window.scrollX}px`;
+            picker.style.display = picker.style.display === 'none' ? 'block' : 'none';
+        });
+
+        picker.addEventListener('emoji-click', (event) => {
+            const emoji = event.detail.unicode;
+            messageContent.value += emoji;
+            picker.style.display = 'none';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!picker.contains(e.target) && e.target !== emojiButton) {
+                picker.style.display = 'none';
+            }
+        });
+    });
+</script>
+
 @if (Context.User.Identity.IsAuthenticated)
 {
     <script>
