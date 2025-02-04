@@ -168,7 +168,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("MessageId");
 
-                    b.ToTable("Attachment");
+                    b.ToTable("attachment");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Category", b =>
@@ -207,7 +207,6 @@ namespace WebApplication1.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("MessageId");
@@ -289,7 +288,6 @@ namespace WebApplication1.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Avatar")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -424,8 +422,7 @@ namespace WebApplication1.Migrations
                     b.HasOne("WebApplication1.Models.User", "User")
                         .WithMany("Messages")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Post");
 

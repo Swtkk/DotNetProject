@@ -52,10 +52,116 @@
             
             @if (User.IsInRole(SD.Role_Admin))
             {
-            <div>
-                Tą wiadomość widzi tylko administrator
+                <div>
+                    Tą wiadomość widzi tylko administrator
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="mt-5 d-flex justify-content-center">
+        <div class="col-md-5">
+            <h3 class="mb-3">Czat na żywo</h3>
+            <div id="messagesList" class="chat-box text-start border   bg-light"></div>
+            <input type="hidden" id="userInput" value="@User.Identity.Name"/>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+            <div class="input-group mb-3">
+                <input type="text" id="messageInput" class="form-control" placeholder="Wpisz wiadomość..."/>
+                <button id="sendButton" class="btn btn-primary">Wyślij</button>
+            </div>
+            }
+            else
+            {
+            <div class="alert alert-warning mt-5">
+                <strong>Musisz być zalogowany, aby korzystać z czatu.</strong> <br>
+                <a href="/Identity/Account/Login" class="btn btn-success mt-2">Zaloguj się</a>
             </div>
             }
         </div>
     </div>
+
+
+
+    @section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chatHub")
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        connection.start()
+            .then(() => {
+                console.log("Połączono z SignalR");
+                return connection.invoke("LoadRecentMessages");
+            })
+            .catch(err => console.error("Błąd połączenia:", err.toString()));
+
+        document.getElementById("sendButton").addEventListener("click", sendMessage);
+        document.getElementById("messageInput").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+        let lastMessageTime = 0;
+        function sendMessage() {
+            const user = document.getElementById("userInput").value;
+            const message = document.getElementById("messageInput").value;
+            const now = new Date().getTime(); // Pobierz aktualny czas w milisekundach
+
+            if (!user || !message) return;
+
+            // Sprawdzenie czy minęło 5 sekund od ostatniej wiadomości
+            if (now - lastMessageTime < 5000) {
+                alert(`Możesz wysyłać wiadomość za ${5-(now-lastMessageTime).toPrecision(1)/1000} sekund!`); // Możesz zamienić na inną metodę wyświetlania
+                return;
+            }
+
+            console.log(`Wysyłanie wiadomości: ${user} - ${message}`);
+            connection.invoke("SendMessage", user, message)
+                .catch(err => console.error("Błąd wysyłania:", err.toString()));
+
+            document.getElementById("messageInput").value = "";
+            lastMessageTime = now; // Aktualizowanie czasu ostatniej wiadomości
+        }
+
+        connection.on("ReceiveMessage", function (user, message) {
+            console.log(`Nowa wiadomość: ${user} - ${message}`);
+            addMessage(user, message);
+        });
+
+        connection.on("LoadMessages", function (messages) {
+            console.log("Ładowanie historii czatu...");
+            messages.forEach(msg => addMessage(msg.UserName, msg.Content));
+        });
+
+        function addMessage(user, message) {
+            const msgDiv = document.createElement("div");
+            msgDiv.classList.add("d-flex", "align-items-start", "mb-1"); // Mniejszy odstęp między wiadomościami
+
+            const msgContent = document.createElement("div");
+            msgContent.classList.add("alert", "alert-secondary", "p-2", "m-0", "w-100", "text-break"); // Kompaktowy styl wiadomości
+            msgContent.innerHTML = `<strong>${user}:</strong> ${message}`;
+
+            msgDiv.appendChild(msgContent);
+            document.getElementById("messagesList").appendChild(msgDiv);
+            document.getElementById("messagesList").scrollTop = document.getElementById("messagesList").scrollHeight;
+        }
+    </script>
+
+    <style>
+        .chat-box {
+            min-height: 400px;
+            max-height: 400px;
+            overflow-y: auto;
+            min-width: 500px;
+            max-width: 500px;
+        }
+    </style>
+    }
+
 </div>
+

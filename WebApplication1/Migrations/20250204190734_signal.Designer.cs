@@ -11,8 +11,8 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241207113103_zalaczniki")]
-    partial class zalaczniki
+    [Migration("20250204190734_signal")]
+    partial class signal
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -171,7 +171,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("MessageId");
 
-                    b.ToTable("Attachment");
+                    b.ToTable("attachment");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Category", b =>
@@ -210,7 +210,6 @@ namespace WebApplication1.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("MessageId");
@@ -292,7 +291,6 @@ namespace WebApplication1.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Avatar")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -427,8 +425,7 @@ namespace WebApplication1.Migrations
                     b.HasOne("WebApplication1.Models.User", "User")
                         .WithMany("Messages")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Post");
 

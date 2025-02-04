@@ -18,7 +18,7 @@ namespace WebApplication1.Models
 
         // Relacja do użytkownika
         public string? UserId { get; set; }
-        public User? User { get; set; }
+        public virtual User? User { get; set; }
         public ICollection<Attachment>? Attachments { get; set; } = new List<Attachment>();
         public bool IsReported { get; set; }
     }

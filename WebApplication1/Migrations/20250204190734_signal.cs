@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace WebApplication1.Migrations
 {
     /// <inheritdoc />
-    public partial class zalaczniki : Migration
+    public partial class signal : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,7 +35,7 @@ namespace WebApplication1.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false),
-                    Avatar = table.Column<string>(type: "longtext", nullable: false),
+                    Avatar = table.Column<string>(type: "longtext", nullable: true),
                     LastActive = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
@@ -245,7 +245,7 @@ namespace WebApplication1.Migrations
                     Content = table.Column<string>(type: "longtext", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     PostId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "varchar(255)", nullable: false),
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: true),
                     IsReported = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
@@ -267,7 +267,7 @@ namespace WebApplication1.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Attachment",
+                name: "attachment",
                 columns: table => new
                 {
                     AttachmentId = table.Column<int>(type: "int", nullable: false)
@@ -278,9 +278,9 @@ namespace WebApplication1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Attachment", x => x.AttachmentId);
+                    table.PrimaryKey("PK_attachment", x => x.AttachmentId);
                     table.ForeignKey(
-                        name: "FK_Attachment_Messages_MessageId",
+                        name: "FK_attachment_Messages_MessageId",
                         column: x => x.MessageId,
                         principalTable: "Messages",
                         principalColumn: "MessageId",
@@ -326,8 +326,8 @@ namespace WebApplication1.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Attachment_MessageId",
-                table: "Attachment",
+                name: "IX_attachment_MessageId",
+                table: "attachment",
                 column: "MessageId");
 
             migrationBuilder.CreateIndex(
@@ -375,7 +375,7 @@ namespace WebApplication1.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Attachment");
+                name: "attachment");
 
             migrationBuilder.DropTable(
                 name: "PrivateMessages");
