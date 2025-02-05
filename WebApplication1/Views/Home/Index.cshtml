@@ -95,7 +95,7 @@
         connection.start()
             .then(() => {
                 console.log("Połączono z SignalR");
-                return connection.invoke("LoadRecentMessages");
+                return connection.invoke("LoadChatHistory"); // Pobierz historię wiadomości
             })
             .catch(err => console.error("Błąd połączenia:", err.toString()));
 
@@ -105,48 +105,46 @@
                 event.preventDefault();
                 sendMessage();
             }
-        });
-        let lastMessageTime = 0;
+});
+
         function sendMessage() {
             const user = document.getElementById("userInput").value;
             const message = document.getElementById("messageInput").value;
-            const now = new Date().getTime(); // Pobierz aktualny czas w milisekundach
 
-            if (!user || !message) return;
-
-            // Sprawdzenie czy minęło 5 sekund od ostatniej wiadomości
-            if (now - lastMessageTime < 5000) {
-                alert(`Możesz wysyłać wiadomość za ${5-(now-lastMessageTime).toPrecision(1)/1000} sekund!`); // Możesz zamienić na inną metodę wyświetlania
-                return;
+            if (user && message) {
+                console.log(`Wysyłanie wiadomości: ${user} - ${message}`);
+                connection.invoke("SendMessage", message).catch(err => console.error("Błąd wysyłania:", err.toString()));
+                document.getElementById("messageInput").value = "";
             }
-
-            console.log(`Wysyłanie wiadomości: ${user} - ${message}`);
-            connection.invoke("SendMessage", user, message)
-                .catch(err => console.error("Błąd wysyłania:", err.toString()));
-
-            document.getElementById("messageInput").value = "";
-            lastMessageTime = now; // Aktualizowanie czasu ostatniej wiadomości
-        }
-
-        connection.on("ReceiveMessage", function (user, message) {
-            console.log(`Nowa wiadomość: ${user} - ${message}`);
-            addMessage(user, message);
-        });
+}
 
         connection.on("LoadMessages", function (messages) {
-            console.log("Ładowanie historii czatu...");
-            messages.forEach(msg => addMessage(msg.UserName, msg.Content));
+            console.log("📜 Ładowanie historii czatu...");
+            console.log(messages); // Debugowanie danych
+
+            messages.forEach(msg => {
+                console.log("📥 Otrzymano wiadomość:", msg);
+                addMessage(msg.userName ?? "Anonim", msg.content ?? "Brak treści");
+            });
+        });
+
+        connection.on("ReceiveMessage", function (message) {
+            console.log("📥 Otrzymano nową wiadomość:", message);
+            addMessage(message.userName ?? "Anonim", message.content ?? "Brak treści");
         });
 
         function addMessage(user, message) {
+            console.log(`Dodawanie wiadomości: ${user} - ${message}`);
+
             const msgDiv = document.createElement("div");
-            msgDiv.classList.add("d-flex", "align-items-start", "mb-1"); // Mniejszy odstęp między wiadomościami
+            msgDiv.classList.add("alert", "alert-secondary", "p-2", "m-1", "w-100", "text-break");
 
-            const msgContent = document.createElement("div");
-            msgContent.classList.add("alert", "alert-secondary", "p-2", "m-0", "w-100", "text-break"); // Kompaktowy styl wiadomości
-            msgContent.innerHTML = `<strong>${user}:</strong> ${message}`;
+            // Sprawdź, czy wartości nie są undefined lub null
+            const displayUser = user && user.trim() !== "" ? user : "Anonim";
+            const displayMessage = message && message.trim() !== "" ? message : "Brak treści";
 
-            msgDiv.appendChild(msgContent);
+            msgDiv.innerHTML = `<strong>${displayUser}:</strong> ${displayMessage}`;
+
             document.getElementById("messagesList").appendChild(msgDiv);
             document.getElementById("messagesList").scrollTop = document.getElementById("messagesList").scrollHeight;
         }

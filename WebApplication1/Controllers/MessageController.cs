@@ -211,11 +211,6 @@ public async Task<IActionResult> Edit(Message message, List<IFormFile> Attachmen
 
 
 
-
-
-
-
-
 // POST: Usuwanie wiadomości
     [HttpPost]
     [ValidateAntiForgeryToken]

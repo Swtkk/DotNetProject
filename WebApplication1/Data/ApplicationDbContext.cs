@@ -13,7 +13,8 @@ namespace WebApplication1.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<PrivateMessage> PrivateMessages { get; set; }
         public DbSet<Attachment> Attachments { get; set; }
-
+        public DbSet<GlobalMessage> GlobalMessages { get; set; }
+        
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
@@ -60,6 +61,13 @@ namespace WebApplication1.Data
                 .WithOne(a => a.Message)
                 .HasForeignKey(a => a.MessageId)
                 .OnDelete(DeleteBehavior.Cascade);
+            // Relacja jeden-do-wielu: User -> GlobalMessage
+            modelBuilder.Entity<GlobalMessage>()
+            .HasOne(m => m.User)
+            .WithMany(u => u.GlobalMessages)
+            .HasForeignKey(m => m.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+                
         }
     }
 }

@@ -11,8 +11,8 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250204190734_signal")]
-    partial class signal
+    [Migration("20250205191402_singalFixed")]
+    partial class singalFixed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -188,6 +188,31 @@ namespace WebApplication1.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.GlobalMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("GlobalMessages");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Message", b =>
@@ -414,6 +439,17 @@ namespace WebApplication1.Migrations
                     b.Navigation("Message");
                 });
 
+            modelBuilder.Entity("WebApplication1.Models.GlobalMessage", b =>
+                {
+                    b.HasOne("WebApplication1.Models.User", "User")
+                        .WithMany("GlobalMessages")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("WebApplication1.Models.Message", b =>
                 {
                     b.HasOne("WebApplication1.Models.Post", "Post")
@@ -479,6 +515,8 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("WebApplication1.Models.User", b =>
                 {
+                    b.Navigation("GlobalMessages");
+
                     b.Navigation("Messages");
 
                     b.Navigation("ReceivedMessages");

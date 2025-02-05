@@ -30,5 +30,6 @@ namespace WebApplication1.Models
         public ICollection<PrivateMessage> ReceivedMessages { get; set; } = new List<PrivateMessage>();
         [NotMapped]
         public string Role { get; set; } 
+        public ICollection<GlobalMessage> GlobalMessages { get; set; } = new List<GlobalMessage>();
     }
 }

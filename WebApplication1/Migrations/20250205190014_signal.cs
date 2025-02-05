@@ -184,6 +184,28 @@ namespace WebApplication1.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "GlobalMessages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GlobalMessages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_GlobalMessages_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "PrivateMessages",
                 columns: table => new
                 {
@@ -331,6 +353,11 @@ namespace WebApplication1.Migrations
                 column: "MessageId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_GlobalMessages_UserId",
+                table: "GlobalMessages",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Messages_PostId",
                 table: "Messages",
                 column: "PostId");
@@ -376,6 +403,9 @@ namespace WebApplication1.Migrations
 
             migrationBuilder.DropTable(
                 name: "attachment");
+
+            migrationBuilder.DropTable(
+                name: "GlobalMessages");
 
             migrationBuilder.DropTable(
                 name: "PrivateMessages");
