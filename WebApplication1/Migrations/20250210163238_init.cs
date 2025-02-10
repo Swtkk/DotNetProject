@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace WebApplication1.Migrations
 {
     /// <inheritdoc />
-    public partial class signal : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -209,16 +209,17 @@ namespace WebApplication1.Migrations
                 name: "PrivateMessages",
                 columns: table => new
                 {
-                    MessageId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Content = table.Column<string>(type: "longtext", nullable: false),
-                    SentAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
                     SenderId = table.Column<string>(type: "varchar(255)", nullable: false),
-                    ReceiverId = table.Column<string>(type: "varchar(255)", nullable: false)
+                    ReceiverId = table.Column<string>(type: "varchar(255)", nullable: false),
+                    Content = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false),
+                    AttachmentUrl = table.Column<string>(type: "longtext", nullable: true),
+                    SentAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    IsRead = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PrivateMessages", x => x.MessageId);
+                    table.PrimaryKey("PK_PrivateMessages", x => x.Id);
                     table.ForeignKey(
                         name: "FK_PrivateMessages_AspNetUsers_ReceiverId",
                         column: x => x.ReceiverId,

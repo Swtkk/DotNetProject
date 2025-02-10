@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "Prywatne wiadomości";
+}
+
+<div class="container mt-4">
+    <h2>Prywatne wiadomości</h2>
+
+    <div class="row">
+        <!-- Lista wszystkich użytkowników -->
+        <div class="col-md-4">
+            <h4>Lista użytkowników</h4>
+            <ul class="list-group" id="usersList">
+                <!-- Lista użytkowników zostanie uzupełniona przez JS -->
+            </ul>
+        </div>
+
+        <!-- Okno czatu -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 id="chatTitle">Wybierz rozmowę</h5>
+                </div>
+                <div class="card-body chat-box" id="chatMessages">
+                    <p class="text-muted">Brak wiadomości</p>
+                </div>
+                <div class="card-footer">
+                    <div class="input-group">
+                        <input type="text" id="messageInput" class="form-control" placeholder="Wpisz wiadomość..."/>
+                        <button id="sendButton" class="btn btn-primary" disabled>Wyślij</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chatHub")
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+    let selectedUser = null;
+    document.addEventListener("DOMContentLoaded", function () {
+        const sendButton = document.getElementById("sendButton");
+        if (sendButton) {
+            sendButton.addEventListener("click", sendMessage);
+        } else {
+            console.error("❌ Element #sendButton nie istnieje.");
+        }
+        });
+
+    connection.start()
+        .then(() => {
+            console.log("✅ Połączono z SignalR");
+            loadUsers(); // Pobierz listę użytkowników
+        })
+        .catch(err => console.error("❌ Błąd połączenia:", err.toString()));
+
+    // Pobieranie listy użytkowników
+    function loadUsers() {
+        fetch("/GetUsers")
+
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById("usersList");
+                list.innerHTML = "";
+                data.forEach(user => {
+                    const li = document.createElement("li");
+                    li.classList.add("list-group-item", "user-item");
+                    li.dataset.userId = user.id;
+                    li.textContent = user.userName;
+                    li.addEventListener("click", () => selectUser(user.id, user.userName));
+                    list.appendChild(li);
+                });
+            })
+            .catch(err => console.error("❌ Błąd ładowania użytkowników:", err.toString()));
+    }
+
+    function selectUser(userId, userName) {
+        selectedUser = userId;
+        document.getElementById("chatTitle").innerText = "Czat z " + userName;
+        document.getElementById("chatMessages").innerHTML = "";
+        document.getElementById("sendButton").disabled = false;
+
+        connection.invoke("LoadPrivateChatHistory", userId)
+            .catch(err => console.error("❌ Błąd ładowania historii czatu:", err.toString()));
+    }
+
+    document.getElementById("sendButton").addEventListener("click", sendMessage);
+    document.getElementById("messageInput").addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            sendMessage();
+        }
+    });
+
+    function sendMessage() {
+        const message = document.getElementById("messageInput").value;
+        if (!selectedUser || !message.trim()) return;
+
+        console.log(`📩 Wysyłanie wiadomości do: ${selectedUser} - ${message}`);
+        connection.invoke("SendPrivateMessage", selectedUser, message)
+            .catch(err => console.error("❌ Błąd wysyłania:", err.toString()));
+
+        document.getElementById("messageInput").value = "";
+    }
+
+    connection.on("ReceivePrivateMessage", function (sender, message) {
+        addMessage(sender, message);
+    });
+
+    connection.on("LoadPrivateMessages", function (messages) {
+        document.getElementById("chatMessages").innerHTML = "";
+        messages.forEach(msg => addMessage(msg.senderName, msg.content));
+    });
+
+    function addMessage(user, message) {
+        const msgDiv = document.createElement("div");
+        msgDiv.classList.add("alert", "alert-secondary", "p-2", "m-1", "w-100", "text-break");
+
+        const displayUser = user && user.trim() !== "" ? user : "Anonim";
+        const displayMessage = message && message.trim() !== "" ? message : "Brak treści";
+
+        msgDiv.innerHTML = `<strong>${displayUser}:</strong> ${displayMessage}`;
+        document.getElementById("chatMessages").appendChild(msgDiv);
+        document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
+    }
+</script>
+
+    <style>
+    .chat-box {
+        min-height: 300px;
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: #f8f9fa;
+    }
+    .user-item {
+        cursor: pointer;
+    }
+    .user-item:hover {
+        background-color: #e9ecef;
+    }
+</style>
+}

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
@@ -73,4 +74,60 @@ public class ChatHub : Hub
 
         await Clients.Caller.SendAsync("LoadMessages", messages);
     }
+    
+    
+    public async Task SendPrivateMessage(string receiverId, string message)
+    {
+        
+        var senderId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(senderId) || string.IsNullOrEmpty(receiverId)) return;
+
+        var sender = await _context.Users.FindAsync(senderId);
+        var receiver = await _context.Users.FindAsync(receiverId);
+
+        if (sender == null || receiver == null) return;
+
+        var privateMessage = new PrivateMessage
+        {
+            SenderId = sender.Id,
+            ReceiverId = receiver.Id,
+            Content = message,
+            SentAt = DateTime.UtcNow
+        };
+
+        _context.PrivateMessages.Add(privateMessage);
+        await _context.SaveChangesAsync();
+
+        await Clients.User(receiverId).SendAsync("ReceivePrivateMessage", sender.UserName, message);
+        await Clients.Caller.SendAsync("ReceivePrivateMessage", sender.UserName, message);
+    }
+
+     
+
+    public async Task LoadPrivateChatHistory(string chatPartnerId)
+    {
+        var userId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(chatPartnerId))
+        {
+            Console.WriteLine("Błąd: Brak ID użytkownika.");
+            return;
+        }
+
+        var messages = await _context.PrivateMessages
+            .Where(m => (m.SenderId == userId && m.ReceiverId == chatPartnerId) ||
+                        (m.SenderId == chatPartnerId && m.ReceiverId == userId))
+            .OrderBy(m => m.SentAt)
+            .Select(m => new
+            {
+                senderName = m.Sender.UserName,
+                content = m.Content,
+                sentAt = m.SentAt.ToString("g")
+            })
+            .ToListAsync();
+
+        await Clients.Caller.SendAsync("LoadPrivateMessages", messages);
+    }
+
+        
 }

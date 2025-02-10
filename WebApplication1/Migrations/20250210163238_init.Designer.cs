@@ -11,8 +11,8 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250205191402_singalFixed")]
-    partial class singalFixed
+    [Migration("20250210163238_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -279,13 +279,20 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("WebApplication1.Models.PrivateMessage", b =>
                 {
-                    b.Property<int>("MessageId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("AttachmentUrl")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ReceiverId")
                         .IsRequired()
@@ -298,7 +305,7 @@ namespace WebApplication1.Migrations
                     b.Property<DateTime>("SentAt")
                         .HasColumnType("datetime(6)");
 
-                    b.HasKey("MessageId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ReceiverId");
 
