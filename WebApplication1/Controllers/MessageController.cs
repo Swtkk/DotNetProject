@@ -29,6 +29,20 @@ public class MessageController : Controller
             return RedirectToAction("Details", "Post", new { id = message.PostId });
         }
 
+        if (Attachments != null && Attachments.Any())
+        {
+            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Attachments");
+            Directory.CreateDirectory(uploadsFolder);
+            foreach (var file in Attachments)
+            {
+                if (file.Length > 2 * 1024 * 1024)
+                {
+                    TempData["ErrorMessage"] = $"Załącznik {file.FileName} jest za duży! Maksymalny rozmiar to 2MB.";
+                    return RedirectToAction("Details", "Post", new { id = message.PostId });
+                }
+            }
+        }
+        
         message.CreatedAt = DateTime.Now;
         message.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -39,15 +53,12 @@ public class MessageController : Controller
         // Obsługa załączników
         if (Attachments != null && Attachments.Count > 0)
         {
-            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Attachments");
-            Directory.CreateDirectory(uploadsFolder);
-
             foreach (var file in Attachments)
             {
                 if (file.Length > 2 * 1024 * 1024) continue; // Ignoruj za duże pliki
 
                 var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var filePath = Path.Combine(uploadsFolder, fileName);
+                var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Attachments", fileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
@@ -81,7 +92,7 @@ public class MessageController : Controller
 
         return View(reportedMessages);
     }
-    
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> MarkAsNotReported(int id)
@@ -99,6 +110,7 @@ public class MessageController : Controller
         // Przekieruj z powrotem do listy zgłoszonych wiadomości
         return RedirectToAction(nameof(ReportedMessages));
     }
+
     [HttpPost]
     public async Task<IActionResult> Report(int id)
     {
@@ -126,89 +138,96 @@ public class MessageController : Controller
         {
             return NotFound();
         }
+
         Console.WriteLine($"MessageId: {message.MessageId}, PostId: {message.PostId}");
         return View(message);
     }
 
 // POST: Aktualizacja wiadomości
     [HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Edit(Message message, List<IFormFile> Attachments)
-{
-    // Znajdź istniejącą wiadomość w bazie danych
-    var existingMessage = _context.Messages
-        .Include(m => m.Attachments)
-        .FirstOrDefault(m => m.MessageId == message.MessageId);
-
-    if (existingMessage == null)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(Message message, List<IFormFile> Attachments)
     {
-        return NotFound();
-    }
+        // Znajdź istniejącą wiadomość w bazie danych
+        var existingMessage = _context.Messages
+            .Include(m => m.Attachments)
+            .FirstOrDefault(m => m.MessageId == message.MessageId);
 
-    if (!ModelState.IsValid)
-    {
-        // Przekaż istniejącą wiadomość, aby zachować jej stan
-        foreach (var key in ModelState.Keys)
+        if (existingMessage == null)
         {
-            var state = ModelState[key];
-            foreach (var error in state.Errors)
-            {
-                Console.WriteLine($"Key: {key}, Error: {error.ErrorMessage}");
-            }
-        }
-        return View(existingMessage);
-    }
-
-    // Aktualizuj treść wiadomości
-    existingMessage.Content = message.Content;
-
-    // Jeśli są nowe załączniki, usuń stare
-    if (Attachments != null && Attachments.Any())
-    {
-        var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Attachments");
-
-        // Usuń istniejące załączniki z serwera i bazy danych
-        foreach (var attachment in existingMessage.Attachments)
-        {
-            var filePath = Path.Combine(uploadsFolder, attachment.FilePath);
-            if (System.IO.File.Exists(filePath))
-            {
-                System.IO.File.Delete(filePath);
-            }
-            _context.Attachments.Remove(attachment);
+            return NotFound();
         }
 
-        // Dodaj nowe załączniki
-        foreach (var file in Attachments)
+        if (!ModelState.IsValid)
         {
-            if (file.Length > 2 * 1024 * 1024) continue; // Ignoruj za duże pliki
-
-            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var filePath = Path.Combine(uploadsFolder, fileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            // Przekaż istniejącą wiadomość, aby zachować jej stan
+            foreach (var key in ModelState.Keys)
             {
-                await file.CopyToAsync(stream);
+                var state = ModelState[key];
+                foreach (var error in state.Errors)
+                {
+                    Console.WriteLine($"Key: {key}, Error: {error.ErrorMessage}");
+                }
             }
 
-            var attachment = new Attachment
-            {
-                FileName = file.FileName,
-                FilePath = Path.Combine("Attachments", fileName),
-                MessageId = existingMessage.MessageId
-            };
-
-            _context.Attachments.Add(attachment);
+            return View(existingMessage);
         }
+
+        // Aktualizuj treść wiadomości
+        existingMessage.Content = message.Content;
+
+        // Jeśli są nowe załączniki, usuń stare
+        if (Attachments != null && Attachments.Any())
+        {
+            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Attachments");
+
+            // Usuń istniejące załączniki z serwera i bazy danych
+            foreach (var attachment in existingMessage.Attachments)
+            {
+                var filePath = Path.Combine(uploadsFolder, attachment.FilePath);
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
+
+                _context.Attachments.Remove(attachment);
+            }
+
+            // Dodaj nowe załączniki
+            foreach (var file in Attachments)
+            {
+                if (file.Length < 2 * 1024 * 1024)
+                {
+                    var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                    var filePath = Path.Combine(uploadsFolder, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    var attachment = new Attachment
+                    {
+                        FileName = file.FileName,
+                        FilePath = Path.Combine("Attachments", fileName),
+                        MessageId = existingMessage.MessageId
+                    };
+                    _context.Attachments.Add(attachment);
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, $"Za duży {file.FileName} (maks. 2MB)");
+                    Console.WriteLine("Plik jest za duzy");
+                }
+            }
+        }
+
+        // Zapisz zmiany w bazie danych
+        await _context.SaveChangesAsync();
+
+        // Przekierowanie do szczegółów posta
+        return RedirectToAction("Details", "Post", new { id = existingMessage.PostId });
     }
-
-    // Zapisz zmiany w bazie danych
-    await _context.SaveChangesAsync();
-
-    // Przekierowanie do szczegółów posta
-    return RedirectToAction("Details", "Post", new { id = existingMessage.PostId });
-}
-
 
 
 // POST: Usuwanie wiadomości
@@ -239,8 +258,4 @@ public async Task<IActionResult> Edit(Message message, List<IFormFile> Attachmen
 
         return RedirectToAction("Details", "Post", new { id = message.PostId });
     }
-   
-
-
-
 }
