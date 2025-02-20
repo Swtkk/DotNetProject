@@ -18,6 +18,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Attachments\40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Attachments\4a7db680-454b-4251-bc37-5aed3311ec7f_MarcinGawryluk.pdf'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebApplication1</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebApplication1</BasePath>
+      <RelativePath>Attachments/4a7db680-454b-4251-bc37-5aed3311ec7f_MarcinGawryluk.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>5b2dj85ei6</Fingerprint>
+      <Integrity>8S8yGs6DAIN8+gmaF8aePwp3sEROhkhvnxjvewDh6Bk=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Attachments\4a7db680-454b-4251-bc37-5aed3311ec7f_MarcinGawryluk.pdf'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Attachments\52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>WebApplication1</SourceId>

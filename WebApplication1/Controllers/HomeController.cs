@@ -18,12 +18,12 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        
+        var cattegories = _context.Categories.OrderBy(c => c.Name).ToList();
         ViewBag.TotalCategories = _context.Categories.Count();
         ViewBag.TotalPosts = _context.Posts.Count();
         ViewBag.TotalUsers = _context.Users.Count();
         ViewBag.TotalMessages = _context.Messages.Count();
-        return View();
+        return View(cattegories);
     }
 
     public IActionResult Privacy()

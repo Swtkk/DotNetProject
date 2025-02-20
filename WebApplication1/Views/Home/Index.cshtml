@@ -1,14 +1,29 @@
-﻿
+﻿@model IEnumerable<WebApplication1.Models.Category>
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <div class="text-center">
         <h1 class="display-4">Witaj na forum</h1>
+       
+        <div class="d-flex justify-content-center">
+            @foreach (var category in Model)
+            {
+                @if (category.Name == "Ogłoszenia i informacje")
+                {
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body text-center rounded-circle">
+                                <h5 class="card-title">@category.Name</h5>
+                                <a asp-controller="Category" asp-action="Details" asp-route-id="@category.CategoryId" class="btn btn-primary">Przejdź dalej</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
         <p>Statystyki Forum :</p>
 
         <div class="row mt-4">
@@ -49,13 +64,8 @@
                     </div>
                 </div>
             </div>
-            
-            @if (User.IsInRole(SD.Role_Admin))
-            {
-                <div>
-                    Tą wiadomość widzi tylko administrator
-                </div>
-            }
+
+
         </div>
     </div>
 
@@ -67,26 +77,25 @@
 
             @if (User.Identity.IsAuthenticated)
             {
-            <div class="input-group mb-3">
-                <input type="text" id="messageInput" class="form-control" placeholder="Wpisz wiadomość..."/>
-                <button id="sendButton" class="btn btn-primary">Wyślij</button>
-            </div>
+                <div class="input-group mb-3">
+                    <input type="text" id="messageInput" class="form-control" placeholder="Wpisz wiadomość..."/>
+                    <button id="sendButton" class="btn btn-primary">Wyślij</button>
+                </div>
             }
             else
             {
-            <div class="alert alert-warning mt-5">
-                <strong>Musisz być zalogowany, aby korzystać z czatu.</strong> <br>
-                <a href="/Identity/Account/Login" class="btn btn-success mt-2">Zaloguj się</a>
-            </div>
+                <div class="alert alert-warning mt-5">
+                    <strong>Musisz być zalogowany, aby korzystać z czatu.</strong> <br>
+                    <a href="/Identity/Account/Login" class="btn btn-success mt-2">Zaloguj się</a>
+                </div>
             }
         </div>
     </div>
 
 
-
     @section Scripts {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
-    <script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+        <script>
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/chatHub")
             .configureLogging(signalR.LogLevel.Information)
@@ -105,7 +114,7 @@
                 event.preventDefault();
                 sendMessage();
             }
-});
+            });
 
         function sendMessage() {
             const user = document.getElementById("userInput").value;
@@ -116,7 +125,7 @@
                 connection.invoke("SendMessage", message).catch(err => console.error("Błąd wysyłania:", err.toString()));
                 document.getElementById("messageInput").value = "";
             }
-}
+            }
 
         connection.on("LoadMessages", function (messages) {
             console.log("📜 Ładowanie historii czatu...");
@@ -150,7 +159,7 @@
         }
     </script>
 
-    <style>
+        <style>
         .chat-box {
             min-height: 400px;
             max-height: 400px;
@@ -162,4 +171,3 @@
     }
 
 </div>
-

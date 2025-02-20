@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9S6DuO2C6saE9mpwynYKrGxgz+skfga1S/ny4ksiheo=",
+  "Hash": "f5A6qxjaNeaBNQ+jZpcdRcOE7TVd3cL6d3bXZU+AZU0=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
@@ -1338,6 +1338,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Attachments\\40aa749f-2df0-47c9-974f-63888ae7b4e1_legitka.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\marci\\RiderProjects\\DotNetProject\\WebApplication1\\wwwroot\\Attachments\\4a7db680-454b-4251-bc37-5aed3311ec7f_MarcinGawryluk.pdf",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marci\\RiderProjects\\DotNetProject\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "Attachments/4a7db680-454b-4251-bc37-5aed3311ec7f_MarcinGawryluk#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5b2dj85ei6",
+      "Integrity": "8S8yGs6DAIN8+gmaF8aePwp3sEROhkhvnxjvewDh6Bk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\4a7db680-454b-4251-bc37-5aed3311ec7f_MarcinGawryluk.pdf"
     },
     {
       "Identity": "C:\\Users\\marci\\RiderProjects\\DotNetProject\\WebApplication1\\wwwroot\\Attachments\\52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.jpg",
@@ -2894,6 +2915,88 @@
       ]
     },
     {
+      "Route": "Attachments/4a7db680-454b-4251-bc37-5aed3311ec7f_MarcinGawryluk.5b2dj85ei6.pdf",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\DotNetProject\\WebApplication1\\wwwroot\\Attachments\\4a7db680-454b-4251-bc37-5aed3311ec7f_MarcinGawryluk.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "135434"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8S8yGs6DAIN8+gmaF8aePwp3sEROhkhvnxjvewDh6Bk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 18 Feb 2025 15:37:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5b2dj85ei6"
+        },
+        {
+          "Name": "label",
+          "Value": "Attachments/4a7db680-454b-4251-bc37-5aed3311ec7f_MarcinGawryluk.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8S8yGs6DAIN8+gmaF8aePwp3sEROhkhvnxjvewDh6Bk="
+        }
+      ]
+    },
+    {
+      "Route": "Attachments/4a7db680-454b-4251-bc37-5aed3311ec7f_MarcinGawryluk.pdf",
+      "AssetFile": "C:\\Users\\marci\\RiderProjects\\DotNetProject\\WebApplication1\\wwwroot\\Attachments\\4a7db680-454b-4251-bc37-5aed3311ec7f_MarcinGawryluk.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "135434"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8S8yGs6DAIN8+gmaF8aePwp3sEROhkhvnxjvewDh6Bk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 18 Feb 2025 15:37:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8S8yGs6DAIN8+gmaF8aePwp3sEROhkhvnxjvewDh6Bk="
+        }
+      ]
+    },
+    {
       "Route": "Attachments/52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.jpg",
       "AssetFile": "C:\\Users\\marci\\RiderProjects\\DotNetProject\\WebApplication1\\wwwroot\\Attachments\\52df6537-a143-41fb-a56b-103a5ad8be0d_legitka.jpg",
       "Selectors": [],
@@ -3244,7 +3347,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Feb 2025 16:04:25 GMT"
+          "Value": "Thu, 20 Feb 2025 18:06:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3281,7 +3384,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Feb 2025 16:04:25 GMT"
+          "Value": "Thu, 20 Feb 2025 18:06:34 GMT"
         },
         {
           "Name": "Cache-Control",
