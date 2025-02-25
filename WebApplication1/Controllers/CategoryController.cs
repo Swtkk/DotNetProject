@@ -64,19 +64,28 @@ public class CategoryController : Controller
         if (category == null) return NotFound();
 
         // Pobieranie postów danej kategorii z paginacją
-        var posts = _context.Posts
-            .Where(p => p.CategoryId == id)
+        var pinnedPosts = _context.Posts
+            .Where(p => p.CategoryId == id && p.IsPinned)
             .OrderByDescending(p => p.CreatedAt)
             .Skip((pageNumber - 1) * SD.PageSize)
             .Take(SD.PageSize)
             .ToList();
 
-        int totalPosts = _context.Posts.Count(p => p.CategoryId == id);
+        var unpinnedPosts = _context.Posts
+            .Where(p => p.CategoryId == id &&!p.IsPinned)
+            .OrderByDescending(p => p.CreatedAt)
+            .Skip((pageNumber - 1) * SD.PageSize)
+            .Take(SD.PageSize)
+            .ToList();
+
+        var allPosts = pinnedPosts.Concat(unpinnedPosts).ToList();
+        
+        int totalPosts = _context.Posts.Count(p => p.CategoryId == id && !p.IsPinned);
         ViewBag.CurrentPage = pageNumber;
         ViewBag.TotalPages = (int)Math.Ceiling(totalPosts / (double)SD.PageSize);
         ViewBag.Category = category;
 
-        return View(posts);
+        return View(allPosts);
     }
 
     [HttpGet]
