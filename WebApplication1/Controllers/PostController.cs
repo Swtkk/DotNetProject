@@ -50,21 +50,38 @@ public class PostController : Controller
     }
     
     [HttpGet]
-    public IActionResult SearchAjax(string query)
+    public IActionResult SearchAjax(string query, int pageNumber = 1)
     {
-        var posts = _context.Posts
-            .Where(p => p.Title.Contains(query))
+        var postsQuery = _context.Posts.AsQueryable();
+
+        // Jeśli query jest puste, zwróć wszystkie posty
+        if (!string.IsNullOrWhiteSpace(query))
+        {
+            postsQuery = postsQuery.Where(p => p.Title.Contains(query));
+        }
+
+        var totalPosts = postsQuery.Count();
+
+        var posts = postsQuery
             .OrderByDescending(p => p.CreatedAt)
+            .Skip((pageNumber - 1) * SD.PageSize)
+            .Take(SD.PageSize)
             .Select(p => new
             {
-                PostId = p.PostId,
-                Title = p.Title,
-                CreatedAt = p.CreatedAt.ToString("yyyy-MM-dd HH:mm")
+                postId = p.PostId,
+                title = p.Title,
+                createdAt = p.CreatedAt.ToString("yyyy-MM-dd HH:mm")
             })
             .ToList();
 
-        return Json(posts);
+        return Json(new
+        {
+            Posts = posts,
+            currentPage = pageNumber,
+            totalPages = (int)Math.Ceiling((double)totalPosts / SD.PageSize)
+        });
     }
+
     
     // POST: Tworzy nowy wątek w kategorii
     [HttpPost]

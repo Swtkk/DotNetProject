@@ -58,42 +58,70 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            $("#searchInput").on("input", function () {
-                var query = $(this).val();
+            let debounceTimer;
 
+            function loadPosts(query = "", pageNumber = 1) {
                 $.ajax({
                     url: '/Post/SearchAjax',
                     type: 'GET',
-                    data: { query: query },
-                    success: function (data) {
+                    data: { query: query, pageNumber: pageNumber },
+                    success: function (response) {
                         var resultDiv = $("#searchResults");
                         resultDiv.empty();
 
-                        if (data.length === 0) {
+                        if (response.posts.length === 0) {
                             resultDiv.append('<div class="alert alert-warning">Brak wyników.</div>');
                         } else {
                             var listGroup = $('<div class="list-group"></div>');
-                            data.forEach(function (post) {
-                                var postTitle = post.title ?? "Brak tytułu"; // Zmienione na małe litery
-                                var postDate = post.createdAt ?? "Brak daty"; // Zmienione na małe litery
+                            response.posts.forEach(function (post) {
+                                var postTitle = post.title ?? "Brak tytułu";
+                                var postDate = post.createdAt ?? "Brak daty";
 
                                 var postLink = $('<a></a>')
-                                    .attr("href", "/Post/Details/" + post.postId) // Zmienione na małe litery
+                                    .attr("href", "/Post/Details/" + post.postId)
                                     .addClass("list-group-item list-group-item-action")
                                     .html('<h5>' + postTitle + '</h5><small>' + postDate + '</small>');
 
                                 listGroup.append(postLink);
                             });
                             resultDiv.append(listGroup);
+
+                            // Paginacja
+                            var paginationDiv = $('<div class="d-flex justify-content-center mt-3"></div>');
+                            if (response.totalPages > 1) {
+                                for (let i = 1; i <= response.totalPages; i++) {
+                                    var pageBtn = $('<button></button>')
+                                        .addClass('btn btn-sm ' + (i === response.currentPage ? 'btn-primary' : 'btn-secondary') + ' mx-1')
+                                        .text(i)
+                                        .click(function () {
+                                            loadPosts($("#searchInput").val(), i);
+                                        });
+                                    paginationDiv.append(pageBtn);
+                                }
+                            }
+                            resultDiv.append(paginationDiv);
                         }
                     },
                     error: function () {
                         $("#searchResults").html('<div class="alert alert-danger">Błąd wyszukiwania.</div>');
                     }
                 });
+            }
+
+            // Inicjalne załadowanie wszystkich postów
+            loadPosts();
+
+            // Dynamiczne wyszukiwanie z debounce
+            $("#searchInput").on("input", function () {
+                clearTimeout(debounceTimer);
+                var query = $(this).val();
+                debounceTimer = setTimeout(function () {
+                    loadPosts(query); // Start od pierwszej strony przy każdej zmianie
+                }, 300); // Opóźnienie 300ms
             });
         });
     </script>
 }
+
 
 
