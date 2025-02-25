@@ -9,7 +9,6 @@ namespace WebApplication1.Controllers;
 public class PostController : Controller
 {
     private readonly ApplicationDbContext _context;
-    private const int PageSize = 20;
     private readonly IWebHostEnvironment _webHostEnvironment;
 
     public PostController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
@@ -25,6 +24,48 @@ public class PostController : Controller
         return View();
     }
 
+    [HttpGet]
+    public IActionResult Search(string query, int pageNumber = 1)
+    {
+        var postsQuery = _context.Posts.AsQueryable();
+
+        if (!string.IsNullOrEmpty(query))
+        {
+            postsQuery = postsQuery.Where(p => p.Title.Contains(query));
+        }
+        
+        var totalPosts = postsQuery.Count();
+        
+        var posts = postsQuery
+            .OrderByDescending(p=> p.CreatedAt)
+            .Skip((pageNumber - 1) * SD.PageSize)
+            .Take(SD.PageSize)
+           .ToList();
+
+        ViewBag.Query = query;
+        ViewBag.CurrentPage = pageNumber;
+        ViewBag.TotalPages = (int)Math.Ceiling(totalPosts / (double)SD.PageSize);
+        
+        return View(posts);
+    }
+    
+    [HttpGet]
+    public IActionResult SearchAjax(string query)
+    {
+        var posts = _context.Posts
+            .Where(p => p.Title.Contains(query))
+            .OrderByDescending(p => p.CreatedAt)
+            .Select(p => new
+            {
+                PostId = p.PostId,
+                Title = p.Title,
+                CreatedAt = p.CreatedAt.ToString("yyyy-MM-dd HH:mm")
+            })
+            .ToList();
+
+        return Json(posts);
+    }
+    
     // POST: Tworzy nowy wątek w kategorii
     [HttpPost]
     [ValidateAntiForgeryToken]

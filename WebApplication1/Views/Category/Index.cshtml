@@ -6,6 +6,9 @@
 }
 
 <h2 class="text-center">Kategorie Forum</h2>
+<div class="text-center mb-4">
+    <a asp-controller="Post" asp-action="Search" class="btn btn-outline-primary">Przejdź do wyszukiwarki postów</a>
+</div>
 
 <div class="row">
     @foreach (var category in Model)

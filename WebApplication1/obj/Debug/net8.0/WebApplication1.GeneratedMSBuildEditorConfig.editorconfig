@@ -232,6 +232,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/marci/RiderProjects/DotNetProject/WebApplication1/Views/Post/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxTZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/marci/RiderProjects/DotNetProject/WebApplication1/Views/PrivateMessage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpdmF0ZU1lc3NhZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

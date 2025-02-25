@@ -1,0 +1,99 @@
+﻿@model IEnumerable<WebApplication1.Models.Post>
+
+@{
+    ViewData["Title"] = "Wyszukiwarka Postów";
+    var query = ViewBag.Query ?? "";
+}
+
+<h2 class="text-center">Wyszukiwarka Postów</h2>
+
+<div class="text-center mb-4">
+    <input type="text" id="searchInput" class="form-control" placeholder="Wyszukaj posty..." value="@query" />
+</div>
+
+<div id="searchResults">
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning">Brak wyników dla wyszukiwania.</div>
+    }
+    else
+    {
+        <div class="list-group">
+            @foreach (var post in Model)
+            {
+                <a asp-controller="Post" asp-action="Details" asp-route-id="@post.PostId" class="list-group-item list-group-item-action">
+                    <h5>@post.Title</h5>
+                    <small>@post.CreatedAt.ToString("yyyy-MM-dd HH:mm")</small>
+                </a>
+            }
+        </div>
+
+        <!-- Paginacja -->
+        <div class="pagination d-flex justify-content-center gap-2 mt-4">
+            @if (ViewBag.CurrentPage > 1)
+            {
+                <a asp-action="Search" asp-route-query="@query" asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" class="btn btn-secondary">Poprzednia</a>
+            }
+
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                if (i == ViewBag.CurrentPage)
+                {
+                    <span class="btn btn-primary">@i</span>
+                }
+                else
+                {
+                    <a asp-action="Search" asp-route-query="@query" asp-route-pageNumber="@i" class="btn btn-secondary">@i</a>
+                }
+            }
+
+            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+            {
+                <a asp-action="Search" asp-route-query="@query" asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" class="btn btn-secondary">Następna</a>
+            }
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#searchInput").on("input", function () {
+                var query = $(this).val();
+
+                $.ajax({
+                    url: '/Post/SearchAjax',
+                    type: 'GET',
+                    data: { query: query },
+                    success: function (data) {
+                        var resultDiv = $("#searchResults");
+                        resultDiv.empty();
+
+                        if (data.length === 0) {
+                            resultDiv.append('<div class="alert alert-warning">Brak wyników.</div>');
+                        } else {
+                            var listGroup = $('<div class="list-group"></div>');
+                            data.forEach(function (post) {
+                                var postTitle = post.title ?? "Brak tytułu"; // Zmienione na małe litery
+                                var postDate = post.createdAt ?? "Brak daty"; // Zmienione na małe litery
+
+                                var postLink = $('<a></a>')
+                                    .attr("href", "/Post/Details/" + post.postId) // Zmienione na małe litery
+                                    .addClass("list-group-item list-group-item-action")
+                                    .html('<h5>' + postTitle + '</h5><small>' + postDate + '</small>');
+
+                                listGroup.append(postLink);
+                            });
+                            resultDiv.append(listGroup);
+                        }
+                    },
+                    error: function () {
+                        $("#searchResults").html('<div class="alert alert-danger">Błąd wyszukiwania.</div>');
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+
