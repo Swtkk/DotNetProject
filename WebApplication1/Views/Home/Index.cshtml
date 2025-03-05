@@ -90,11 +90,43 @@
                 </div>
             }
         </div>
+        <div class="container text-center mt-4">
+            <h1>Losowy Mem</h1>
+            <img id="memeImage" src="\Images\userAvatar.png" class="img-fluid" alt="Losowy mem">
+            <button id="loadMemeBtn" class="btn btn-primary mt-3">Pobierz nowy mem</button>
+        </div>
+
+
     </div>
 
 
     @section Scripts {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+        document.getElementById("loadMemeBtn").addEventListener("click", function () {
+            console.log("⏳ Wysyłam żądanie do Serwis...");
+
+            // Najpierw wysyłamy żądanie do Serwis (producent Kafka)
+            fetch("http://localhost:5002/api/meme/random")
+                .then(response => response.json())
+                .then(() => {
+                    console.log("✅ Mem wysłany do Kafka, czekam na odbiór...");
+
+                    // Po krótkim czasie odbieramy mema z Kafka (czekamy 2 sekundy)
+                    setTimeout(() => {
+                        fetch("/api/getMeme")
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log("📥 Otrzymano mema z Kafka:", data.url);
+                                document.getElementById("memeImage").src = data.url;
+                            })
+                            .catch(error => console.error("❌ Błąd pobierania mema:", error));
+                    }, 2000);
+                })
+                .catch(error => console.error("❌ Błąd wysyłania mema do Kafka:", error));
+        });
+
+    </script>
         <script>
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/chatHub")

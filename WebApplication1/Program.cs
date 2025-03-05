@@ -7,6 +7,7 @@ using WebApplication1.Models;
 using WebApplication1.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls("http://localhost:5001");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -15,7 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 // options => options.SignIn.RequireConfirmedAccount = true  potwierdzenie maila
-
+builder.Services.AddHostedService<KafkaConsumerService>();
 builder.Services.AddIdentity<User,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
