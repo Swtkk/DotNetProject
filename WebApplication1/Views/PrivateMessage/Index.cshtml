@@ -62,11 +62,16 @@
     // Pobieranie listy użytkowników
     function loadUsers() {
         fetch("/GetUsers")
-
             .then(response => response.json())
             .then(data => {
                 const list = document.getElementById("usersList");
                 list.innerHTML = "";
+
+                if (data.length === 0) {
+                    list.innerHTML = "<li class='list-group-item text-muted'>Brak użytkowników</li>";
+                    return;
+                }
+
                 data.forEach(user => {
                     const li = document.createElement("li");
                     li.classList.add("list-group-item", "user-item");
@@ -85,9 +90,12 @@
         document.getElementById("chatMessages").innerHTML = "";
         document.getElementById("sendButton").disabled = false;
 
+        $.post('/PrivateMessage/MarkMessagesAsRead', { otherUserId: userId });
+
         connection.invoke("LoadPrivateChatHistory", userId)
             .catch(err => console.error("❌ Błąd ładowania historii czatu:", err.toString()));
     }
+
 
     document.getElementById("sendButton").addEventListener("click", sendMessage);
     document.getElementById("messageInput").addEventListener("keypress", function (event) {
@@ -98,19 +106,33 @@
     });
 
     function sendMessage() {
-        const message = document.getElementById("messageInput").value;
-        if (!selectedUser || !message.trim()) return;
+        const message = document.getElementById("messageInput").value.trim();
+        if (!selectedUser || message === "") {
+            alert("Nie można wysłać pustej wiadomości.");
+            return;
+        }
 
-        console.log(`📩 Wysyłanie wiadomości do: ${selectedUser} - ${message}`);
         connection.invoke("SendPrivateMessage", selectedUser, message)
+            .then(() => {
+                addMessage("Ty", message);
+            })
             .catch(err => console.error("❌ Błąd wysyłania:", err.toString()));
 
         document.getElementById("messageInput").value = "";
     }
 
-    connection.on("ReceivePrivateMessage", function (sender, message) {
-        addMessage(sender, message);
-    });
+
+
+
+    connection.on("ReceivePrivateMessage", function (senderId, senderName, message) {
+        if (selectedUser === senderId) {
+            addMessage(senderName, message);
+        } else {
+            checkUnreadMessages();
+        }
+});
+
+
 
     connection.on("LoadPrivateMessages", function (messages) {
         document.getElementById("chatMessages").innerHTML = "";
@@ -128,6 +150,44 @@
         document.getElementById("chatMessages").appendChild(msgDiv);
         document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
     }
+    function loadConversation(otherUserId) {
+        $.get('/PrivateMessage/GetConversationWithUser', { otherUserId: otherUserId }, function(messages) {
+            let chatBox = $('#chat-box');
+            chatBox.empty();
+
+            messages.forEach(msg => {
+                let msgClass = (msg.senderId === currentUserId) ? 'sent-message' : 'received-message';
+                chatBox.append(`<div class="${msgClass}"><strong>${msg.senderName}:</strong> ${msg.content}</div>`);
+            });
+
+            markMessagesAsRead(otherUserId);
+        });
+    }
+
+    function markMessagesAsRead(otherUserId) {
+        $.post('/PrivateMessage/MarkMessagesAsRead', { otherUserId: otherUserId });
+    }
+
+    function checkUnreadMessages() {
+        $.get('/PrivateMessage/GetUnreadMessages', function(data) {
+            $('.user-item').each(function() {
+                let userId = $(this).data('userId');
+                let unread = data.find(u => u.SenderId == userId);
+                if (unread) {
+                    $(this).append('<span class="unread-dot" style="color: red;">●</span>');
+                } else {
+                    $(this).find('.unread-dot').remove();
+                }
+            });
+        });
+    }
+
+    // Sprawdzaj nieprzeczytane wiadomości co 5 sekund
+    setInterval(checkUnreadMessages, 5000);
+
+
+
+
 </script>
 
     <style>
@@ -147,4 +207,3 @@
     }
 </style>
 }
-

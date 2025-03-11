@@ -78,7 +78,6 @@ public class ChatHub : Hub
     
     public async Task SendPrivateMessage(string receiverId, string message)
     {
-        
         var senderId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         if (string.IsNullOrEmpty(senderId) || string.IsNullOrEmpty(receiverId)) return;
 
@@ -92,27 +91,29 @@ public class ChatHub : Hub
             SenderId = sender.Id,
             ReceiverId = receiver.Id,
             Content = message,
-            SentAt = DateTime.UtcNow
+            SentAt = DateTime.UtcNow,
+            IsRead = false
         };
 
         _context.PrivateMessages.Add(privateMessage);
         await _context.SaveChangesAsync();
 
-        await Clients.User(receiverId).SendAsync("ReceivePrivateMessage", sender.UserName, message);
-        await Clients.Caller.SendAsync("ReceivePrivateMessage", sender.UserName, message);
+        // Wysyłamy wiadomość do nadawcy (żeby zaktualizował swój czat)
+        await Clients.User(senderId).SendAsync("ReceivePrivateMessage", sender.Id, sender.UserName, message);
+
+        // Jeśli odbiorca jest online, wysyłamy mu wiadomość
+        await Clients.User(receiverId).SendAsync("ReceivePrivateMessage", sender.Id, sender.UserName, message);
+
+        // Oznaczamy wiadomość jako nieprzeczytaną dla odbiorcy
+        await Clients.User(receiverId).SendAsync("UpdateUnreadMessages");
     }
 
-     
+    
 
     public async Task LoadPrivateChatHistory(string chatPartnerId)
     {
         var userId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-        if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(chatPartnerId))
-        {
-            Console.WriteLine("Błąd: Brak ID użytkownika.");
-            return;
-        }
+        if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(chatPartnerId)) return;
 
         var messages = await _context.PrivateMessages
             .Where(m => (m.SenderId == userId && m.ReceiverId == chatPartnerId) ||
@@ -120,14 +121,31 @@ public class ChatHub : Hub
             .OrderBy(m => m.SentAt)
             .Select(m => new
             {
+                senderId = m.SenderId,
                 senderName = m.Sender.UserName,
                 content = m.Content,
-                sentAt = m.SentAt.ToString("g")
+                sentAt = m.SentAt.ToString("g"),
+                isRead = m.IsRead
             })
             .ToListAsync();
 
+        // Oznaczamy wiadomości jako przeczytane
+        var unreadMessages = await _context.PrivateMessages
+            .Where(m => m.SenderId == chatPartnerId && m.ReceiverId == userId && !m.IsRead)
+            .ToListAsync();
+
+        if (unreadMessages.Any())
+        {
+            unreadMessages.ForEach(m => m.IsRead = true);
+            await _context.SaveChangesAsync();
+        }
+
         await Clients.Caller.SendAsync("LoadPrivateMessages", messages);
     }
+
+
+
+
 
         
 }
