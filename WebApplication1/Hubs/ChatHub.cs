@@ -92,21 +92,21 @@ public class ChatHub : Hub
             ReceiverId = receiver.Id,
             Content = message,
             SentAt = DateTime.UtcNow,
-            IsRead = false
+            IsRead = false // Oznacz jako nieprzeczytaną
         };
 
         _context.PrivateMessages.Add(privateMessage);
         await _context.SaveChangesAsync();
 
-        // Wysyłamy wiadomość do nadawcy (żeby zaktualizował swój czat)
+        // Powiadomienie nadawcy i odbiorcy
         await Clients.User(senderId).SendAsync("ReceivePrivateMessage", sender.Id, sender.UserName, message);
-
-        // Jeśli odbiorca jest online, wysyłamy mu wiadomość
         await Clients.User(receiverId).SendAsync("ReceivePrivateMessage", sender.Id, sender.UserName, message);
 
-        // Oznaczamy wiadomość jako nieprzeczytaną dla odbiorcy
-        await Clients.User(receiverId).SendAsync("UpdateUnreadMessages");
+        // Aktualizacja nieprzeczytanych wiadomości dla odbiorcy
+        await Clients.User(receiverId).SendAsync("UpdateUnreadMessages", senderId);
     }
+
+
 
     
 
@@ -143,9 +143,5 @@ public class ChatHub : Hub
         await Clients.Caller.SendAsync("LoadPrivateMessages", messages);
     }
 
-
-
-
-
-        
+    
 }

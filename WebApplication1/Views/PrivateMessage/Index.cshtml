@@ -37,158 +37,220 @@
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
     <script>
-    const connection = new signalR.HubConnectionBuilder()
-        .withUrl("/chatHub")
-        .configureLogging(signalR.LogLevel.Information)
-        .build();
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chatHub")
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
 
-    let selectedUser = null;
-    document.addEventListener("DOMContentLoaded", function () {
-        const sendButton = document.getElementById("sendButton");
-        if (sendButton) {
-            sendButton.addEventListener("click", sendMessage);
-        } else {
-            console.error("❌ Element #sendButton nie istnieje.");
-        }
-        });
-
-    connection.start()
-        .then(() => {
-            console.log("✅ Połączono z SignalR");
-            loadUsers(); // Pobierz listę użytkowników
-        })
-        .catch(err => console.error("❌ Błąd połączenia:", err.toString()));
-
-    // Pobieranie listy użytkowników
-    function loadUsers() {
-        fetch("/GetUsers")
-            .then(response => response.json())
-            .then(data => {
-                const list = document.getElementById("usersList");
-                list.innerHTML = "";
-
-                if (data.length === 0) {
-                    list.innerHTML = "<li class='list-group-item text-muted'>Brak użytkowników</li>";
-                    return;
+        let selectedUser = null;
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("sendButton").addEventListener("click", sendMessage);
+            document.getElementById("messageInput").addEventListener("keypress", function (event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    sendMessage();
                 }
+            });
 
-                data.forEach(user => {
-                    const li = document.createElement("li");
-                    li.classList.add("list-group-item", "user-item");
-                    li.dataset.userId = user.id;
-                    li.textContent = user.userName;
-                    li.addEventListener("click", () => selectUser(user.id, user.userName));
-                    list.appendChild(li);
-                });
-            })
-            .catch(err => console.error("❌ Błąd ładowania użytkowników:", err.toString()));
-    }
-
-    function selectUser(userId, userName) {
-        selectedUser = userId;
-        document.getElementById("chatTitle").innerText = "Czat z " + userName;
-        document.getElementById("chatMessages").innerHTML = "";
-        document.getElementById("sendButton").disabled = false;
-
-        $.post('/PrivateMessage/MarkMessagesAsRead', { otherUserId: userId });
-
-        connection.invoke("LoadPrivateChatHistory", userId)
-            .catch(err => console.error("❌ Błąd ładowania historii czatu:", err.toString()));
-    }
-
-
-    document.getElementById("sendButton").addEventListener("click", sendMessage);
-    document.getElementById("messageInput").addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            sendMessage();
-        }
-    });
-
-    function sendMessage() {
-        const message = document.getElementById("messageInput").value.trim();
-        if (!selectedUser || message === "") {
-            alert("Nie można wysłać pustej wiadomości.");
-            return;
-        }
-
-        connection.invoke("SendPrivateMessage", selectedUser, message)
-            .then(() => {
-                addMessage("Ty", message);
-            })
-            .catch(err => console.error("❌ Błąd wysyłania:", err.toString()));
-
-        document.getElementById("messageInput").value = "";
-    }
-
-
-
-
-    connection.on("ReceivePrivateMessage", function (senderId, senderName, message) {
-        if (selectedUser === senderId) {
-            addMessage(senderName, message);
-        } else {
+            // Ładujemy nieprzeczytane wiadomości przy starcie
             checkUnreadMessages();
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            loadUsers();
+            setTimeout(checkUnreadMessages, 1000); // Oczekiwanie na załadowanie listy użytkowników
+        });
+
+
+        // Połączenie z SignalR
+        connection.start()
+            .then(() => {
+                console.log("✅ Połączono z SignalR");
+                loadUsers();
+            })
+            .catch(err => console.error("❌ Błąd połączenia:", err.toString()));
+
+        // Pobranie listy użytkowników
+        function loadUsers() {
+            fetch("/GetUsers")
+                .then(response => response.json())
+                .then(data => {
+                    const list = document.getElementById("usersList");
+                    list.innerHTML = "";
+
+                    data.forEach(user => {
+                        const li = document.createElement("li");
+                        li.classList.add("list-group-item", "user-item");
+                        li.dataset.userId = user.id;
+                        li.textContent = user.userName;
+                        li.addEventListener("click", () => selectUser(user.id, user.userName));
+                        list.appendChild(li);
+                    });
+
+                    // Po załadowaniu użytkowników, sprawdzamy nieprzeczytane wiadomości
+                    checkUnreadMessages();
+                })
+                .catch(err => console.error("❌ Błąd ładowania użytkowników:", err.toString()));
         }
-});
+
+        // Wybór użytkownika do czatu
+        function selectUser(userId, userName) {
+            selectedUser = userId;
+            document.getElementById("chatTitle").innerText = "Czat z " + userName;
+            document.getElementById("chatMessages").innerHTML = "";
+            document.getElementById("sendButton").disabled = false;
+
+            console.log(`📤 Otworzono czat z użytkownikiem: ${userId}`);
+
+            // Pobranie historii czatu
+            connection.invoke("LoadPrivateChatHistory", userId)
+                .catch(err => console.error("❌ Błąd ładowania historii czatu:", err.toString()));
+
+            // Oznacz wiadomości jako przeczytane
+            markMessagesAsRead(userId);
+
+            // Usuń kropkę, bo użytkownik wszedł do rozmowy
+            removeUnreadDot(userId);
+        }
 
 
+        // Wysłanie wiadomości
+        function sendMessage() {
+            const messageInput = document.getElementById("messageInput");
+            const message = messageInput.value.trim();
 
-    connection.on("LoadPrivateMessages", function (messages) {
-        document.getElementById("chatMessages").innerHTML = "";
-        messages.forEach(msg => addMessage(msg.senderName, msg.content));
-    });
+            if (!selectedUser || message === "") {
+                alert("Nie można wysłać pustej wiadomości.");
+                return;
+            }
 
-    function addMessage(user, message) {
-        const msgDiv = document.createElement("div");
-        msgDiv.classList.add("alert", "alert-secondary", "p-2", "m-1", "w-100", "text-break");
+            console.log(`📩 Wysyłanie wiadomości do: ${selectedUser} - ${message}`);
 
-        const displayUser = user && user.trim() !== "" ? user : "Anonim";
-        const displayMessage = message && message.trim() !== "" ? message : "Brak treści";
+            connection.invoke("SendPrivateMessage", selectedUser, message)
+                .then(() => {
+                    addMessage("Ty", message);
+                })
+                .catch(err => console.error("❌ Błąd wysyłania:", err.toString()));
 
-        msgDiv.innerHTML = `<strong>${displayUser}:</strong> ${displayMessage}`;
-        document.getElementById("chatMessages").appendChild(msgDiv);
-        document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
-    }
-    function loadConversation(otherUserId) {
-        $.get('/PrivateMessage/GetConversationWithUser', { otherUserId: otherUserId }, function(messages) {
-            let chatBox = $('#chat-box');
-            chatBox.empty();
+            messageInput.value = "";
+       
+        }
 
-            messages.forEach(msg => {
-                let msgClass = (msg.senderId === currentUserId) ? 'sent-message' : 'received-message';
-                chatBox.append(`<div class="${msgClass}"><strong>${msg.senderName}:</strong> ${msg.content}</div>`);
-            });
-
-            markMessagesAsRead(otherUserId);
+        // Odbiór wiadomości w czasie rzeczywistym
+        connection.on("ReceivePrivateMessage", function (senderId, senderName, message) {
+            if (selectedUser === senderId) {
+                addMessage(senderName, message);
+                markMessagesAsRead(senderId);
+            } else {
+                markAsUnread(senderId);
+            }
         });
-    }
 
-    function markMessagesAsRead(otherUserId) {
-        $.post('/PrivateMessage/MarkMessagesAsRead', { otherUserId: otherUserId });
-    }
+        // Odbiór powiadomienia o nowej wiadomości (server push)
+        connection.on("UpdateUnreadMessages", function (senderId) {
+            console.log(`🔔 Otrzymano powiadomienie o nowej wiadomości od użytkownika: ${senderId}`);
+            markAsUnread(senderId);
+            //loadUsers();
+            checkUnreadMessages();
+        });
 
-    function checkUnreadMessages() {
-        $.get('/PrivateMessage/GetUnreadMessages', function(data) {
-            $('.user-item').each(function() {
-                let userId = $(this).data('userId');
-                let unread = data.find(u => u.SenderId == userId);
-                if (unread) {
-                    $(this).append('<span class="unread-dot" style="color: red;">●</span>');
+        // Dodanie wiadomości do okna czatu + przewinięcie do dołu
+        function addMessage(user, message) {
+            const msgDiv = document.createElement("div");
+            msgDiv.classList.add("alert", "alert-secondary", "p-2", "m-1", "w-100", "text-break");
+            msgDiv.innerHTML = `<strong>${user}:</strong> ${message}`;
+            document.getElementById("chatMessages").appendChild(msgDiv);
+              
+            scrollToBottom();
+        }
+
+        // Oznaczenie wiadomości jako przeczytanych
+        function markMessagesAsRead(otherUserId) {
+            fetch('/MarkMessagesAsRead', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ otherUserId })
+            }).then(response => {
+                if (response.ok) {
+                    console.log(`✅ Wiadomości od ${otherUserId} oznaczone jako przeczytane.`);
+                    setTimeout(checkUnreadMessages, 2000); // Odświeżenie stanu po 2 sek.
                 } else {
-                    $(this).find('.unread-dot').remove();
+                    console.error("❌ Błąd podczas oznaczania wiadomości jako przeczytane.");
                 }
-            });
+            }).catch(error => console.error("❌ Błąd połączenia z serwerem:", error));
+        }
+
+
+
+
+        // Oznaczenie użytkownika jako posiadającego nieprzeczytane wiadomości
+        function markAsUnread(userId, unreadCount) {
+            const userElement = document.querySelector(`.user-item[data-user-id="${userId}"]`);
+            if (userElement) {
+                let unreadDot = userElement.querySelector('.unread-dot');
+                if (!unreadDot) {
+                    unreadDot = document.createElement('span');
+                    unreadDot.classList.add('unread-dot');
+                    unreadDot.style.color = 'red';
+                    unreadDot.style.fontWeight = 'bold';
+                    unreadDot.style.marginLeft = '5px';
+                    userElement.appendChild(unreadDot);
+                }
+                unreadDot.textContent = unreadCount ? `● (${unreadCount})` : `● (1)`;
+            
+            }
+        }
+
+        // Usunięcie kropki nieprzeczytanych wiadomości po otwarciu konwersacji
+        function removeUnreadDot(userId) {
+            const userElement = document.querySelector(`.user-item[data-user-id="${userId}"]`);
+            if (userElement) {
+                const unreadDot = userElement.querySelector('.unread-dot');
+                if (unreadDot) {
+                    unreadDot.remove();
+                    console.log(`✅ Kropka usunięta dla użytkownika: ${userId}`);
+                }
+            }
+        }
+
+
+        // Sprawdzenie nieprzeczytanych wiadomości dla użytkowników
+        function checkUnreadMessages() {
+            fetch('/GetUnreadMessages')
+                .then(response => response.json())
+                .then(data => {
+                    console.log("📩 Otrzymano nieprzeczytane wiadomości:", data);
+                    console.log("📩 Otrzymano nieprzeczytane wiadomości:", data[0].senderId);
+
+                    document.querySelectorAll('.unread-dot').forEach(dot => dot.remove()); // Usuń stare kropki
+            
+                    markAsUnread(data[0].senderId, data[0].unreadCount);
+                    
+                })
+                .catch(err => console.error("❌ Błąd pobierania nieprzeczytanych wiadomości:", err.toString()));
+        }
+
+
+        // Funkcja do przewijania na dół
+        function scrollToBottom() {
+            const chatMessages = document.getElementById("chatMessages");
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Załaduj historię wiadomości
+        connection.on("LoadPrivateMessages", function (messages) {
+            console.log("📜 Otrzymano historię czatu:", messages);
+            document.getElementById("chatMessages").innerHTML = "";
+
+            messages.forEach(msg => addMessage(msg.senderName, msg.content));
+
+            // Po załadowaniu historii przewiń na dół
+            scrollToBottom();
         });
-    }
-
-    // Sprawdzaj nieprzeczytane wiadomości co 5 sekund
-    setInterval(checkUnreadMessages, 5000);
 
 
 
 
-</script>
+    </script>
 
     <style>
     .chat-box {

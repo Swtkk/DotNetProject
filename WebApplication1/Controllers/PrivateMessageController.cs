@@ -103,14 +103,14 @@ public class PrivateMessageController : Controller
 
     
     [HttpPost("MarkMessagesAsRead")]
-    public async Task<IActionResult> MarkMessagesAsRead(string otherUserId)
+    public async Task<IActionResult> MarkMessagesAsRead([FromBody] Dictionary<string, string> data)
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!data.ContainsKey("otherUserId")) return BadRequest("Brak ID użytkownika.");
 
-        if (string.IsNullOrEmpty(userId))
-        {
-            return Unauthorized();
-        }
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userId)) return Unauthorized();
+
+        string otherUserId = data["otherUserId"];
 
         var unreadMessages = await _context.PrivateMessages
             .Where(m => m.SenderId == otherUserId && m.ReceiverId == userId && !m.IsRead)
@@ -120,10 +120,18 @@ public class PrivateMessageController : Controller
         {
             unreadMessages.ForEach(m => m.IsRead = true);
             await _context.SaveChangesAsync();
+            Console.WriteLine($"✅ Oznaczono jako przeczytane wiadomości od {otherUserId} dla {userId}");
+        }
+        else
+        {
+            Console.WriteLine($"⚠️ Brak nieprzeczytanych wiadomości do oznaczenia dla {userId}");
         }
 
         return Ok();
     }
+
+
+
 
 
     [HttpGet("GetUnreadMessages")]
@@ -133,12 +141,35 @@ public class PrivateMessageController : Controller
         if (string.IsNullOrEmpty(userId)) return Unauthorized();
 
         var unreadMessages = await _context.PrivateMessages
-            .Where(m => m.ReceiverId == userId && !m.IsRead)
+            .Where(m => m.ReceiverId == userId && !m.IsRead) // Pobierz tylko nieprzeczytane wiadomości
             .GroupBy(m => m.SenderId)
-            .Select(g => new { SenderId = g.Key, UnreadCount = g.Count() })
+            .Select(g => new 
+            { 
+                SenderId = g.Key, 
+                UnreadCount = g.Count()  // Zliczamy liczbę nieprzeczytanych wiadomości od nadawcy
+            })
             .ToListAsync();
+
+        if (!unreadMessages.Any())
+        {
+            Console.WriteLine($"🔍 Brak nieprzeczytanych wiadomości dla użytkownika {userId}");
+        }
+        else
+        {
+            foreach (var msg in unreadMessages)
+            {
+                Console.WriteLine($"📩 Od: {msg.SenderId}, Nieprzeczytane: {msg.UnreadCount}");
+            }
+        }
 
         return Json(unreadMessages);
     }
+
+
+
+
+
+
+
 
 }
